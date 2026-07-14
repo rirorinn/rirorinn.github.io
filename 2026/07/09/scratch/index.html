@@ -489,7 +489,7 @@
             </div>
             <div class="flex items-center gap-1">
               <iconify-icon width="18" icon="mingcute:refresh-3-fill" ></iconify-icon>
-              Edited: <time class="w-max">2026-07-09</time>
+              Edited: <time class="w-max">2026-07-14</time>
             </div>
           </div>
           <div class="flex flex-wrap items-center gap-x-3 gap-y-3">
@@ -499,7 +499,7 @@
             <!-- Word count -->
             <span class="flex items-center gap-1">
               <iconify-icon width="18" icon="mingcute:book-2-fill" ></iconify-icon>
-              <span>1k words, 3 min</span>
+              <span>2.8k words, 9 min</span>
             </span>
             <!-- Categories -->
             
@@ -539,294 +539,342 @@
   </header>
   <!-- content -->
   <article class="post-content prose m-auto dark:prose-invert">
-    <h1 id="overview"><a href="#overview" class="headerlink" title="overview"></a>overview</h1><h2 id="第一阶段：认识与探索"><a href="#第一阶段：认识与探索" class="headerlink" title="第一阶段：认识与探索"></a>第一阶段：认识与探索</h2><blockquote>
-<p>目标：熟悉 Scratch 环境，能让角色做出简单动作</p>
-</blockquote>
-<p><strong>阶段产出</strong>：学生学会 Scratch 基本操作</p>
-<hr>
-<h2 id="第二阶段：事件与序列"><a href="#第二阶段：事件与序列" class="headerlink" title="第二阶段：事件与序列"></a>第二阶段：事件与序列</h2><blockquote>
-<p>目标：理解”事件触发”和”顺序执行”概念</p>
-</blockquote>
-<p>练习：</p>
+    <hr>
+<h1 id="迷宫探险-Maze-Adventure"><a href="#迷宫探险-Maze-Adventure" class="headerlink" title="迷宫探险 Maze Adventure"></a>迷宫探险 Maze Adventure</h1><h2 id="项目目标"><a href="#项目目标" class="headerlink" title="项目目标"></a>项目目标</h2><p>制作一个迷宫探险游戏：</p>
+<p>玩家控制小虫子在迷宫中移动，避开墙壁，收集完成所有水果。</p>
+<p>通过本项目复习并学习：</p>
+<ul>
+<li>键盘控制角色移动</li>
+<li>循环（重复执行）</li>
+<li>条件判断</li>
+<li>变量</li>
+<li>广播消息</li>
+<li>游戏状态管理</li>
+</ul>
 <div style="position:relative;padding-bottom:75%;height:0;overflow:hidden;">
 <iframe
-  src="/scratch/challenges.html"
+  src="/scratch/MazeStart.html"
   style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
 </iframe>
 </div>
 
-<table>
-<thead>
-<tr>
-<th>课次</th>
-<th>主题</th>
-<th>知识点</th>
-<th>项目产出</th>
-<th>时间分配</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>7</td>
-<td>谁来触发？</td>
-<td>绿旗&#x2F;按键&#x2F;点击三种事件</td>
-<td>按键控制角色</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>8</td>
-<td>按顺序来</td>
-<td>顺序结构、等待积木</td>
-<td>讲故事动画（3幕）</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>9</td>
-<td>角色对话</td>
-<td>广播消息、接收消息</td>
-<td>两人问答动画</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>10</td>
-<td>舞台坐标</td>
-<td>X&#x2F;Y 概念、移到坐标</td>
-<td>角色精准定位</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>11</td>
-<td>方向感</td>
-<td>面向方向、面向鼠标</td>
-<td>指南针&#x2F;跟踪鼠标</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>12</td>
-<td>小短剧</td>
-<td>综合：事件+序列+广播</td>
-<td>外星飞碟剧场</td>
-<td>讲5+练45+展示10</td>
-</tr>
-</tbody></table>
-<p><strong>阶段产出</strong>：学生能做出有剧情的多角色互动动画</p>
+
+<h2 id="Part-1：基础迷宫挑战（Maze-Explorer）"><a href="#Part-1：基础迷宫挑战（Maze-Explorer）" class="headerlink" title="Part 1：基础迷宫挑战（Maze Explorer）"></a>Part 1：基础迷宫挑战（Maze Explorer）</h2><h3 id="游戏介绍"><a href="#游戏介绍" class="headerlink" title="游戏介绍"></a>游戏介绍</h3><p>控制小虫子找到水果。</p>
+<p>规则：</p>
+<ul>
+<li>方向键控制移动</li>
+<li>碰到墙壁不能通过</li>
+<li>到达水果，游戏胜利</li>
+</ul>
+<h3 id="学习内容"><a href="#学习内容" class="headerlink" title="学习内容"></a>学习内容</h3><ol>
+<li>角色移动：上下左右键</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0°  = 上</span><br><span class="line">90° = 右</span><br><span class="line">180° = 下</span><br><span class="line">-90° = 左</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>碰撞检测：条件判断</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果碰到墙</span><br><span class="line">    移动-10步</span><br></pre></td></tr></table></figure>
+
+<p>完成第一个版本：虫子 → 水果</p>
+<h2 id="Part-2：水果收集大冒险（Fruit-Maze-Adventure）"><a href="#Part-2：水果收集大冒险（Fruit-Maze-Adventure）" class="headerlink" title="Part 2：水果收集大冒险（Fruit Maze Adventure）"></a>Part 2：水果收集大冒险（Fruit Maze Adventure）</h2><ul>
+<li>增加多个水果，玩家需要收集所有水果才能完成游戏。(变量 &#x3D; 游戏状态)</li>
+<li>增加生命值，玩家碰到墙壁会扣除生命值，生命值为0时游戏失败。(变量保存游戏信息)</li>
+<li>增加计时器。</li>
+</ul>
+<h3 id="学习内容-1"><a href="#学习内容-1" class="headerlink" title="学习内容"></a>学习内容</h3><ol>
+<li>变量：水果、生命值、计时器</li>
+<li>广播消息：游戏开始、游戏结束<br> 原因： 游戏结束时：多个角色需要同时响应。</li>
+</ol>
+<h2 id="Challenge：迷宫探险大挑战（Maze-Adventure-Challenge）"><a href="#Challenge：迷宫探险大挑战（Maze-Adventure-Challenge）" class="headerlink" title="Challenge：迷宫探险大挑战（Maze Adventure Challenge）"></a>Challenge：迷宫探险大挑战（Maze Adventure Challenge）</h2><p><a target="_blank" rel="noopener" href="https://www.mazegenerator.net/">Maze Generator</a></p>
+<div style="position:relative;padding-bottom:75%;height:0;overflow:hidden;">
+<iframe
+  src="/scratch/Maze Challenge.html"
+  style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+</iframe>
+</div>
+
+
+<ul>
+<li>增加迷宫难度，迷宫中有多个分支和死路，玩家需要找到正确的路径才能到达水果处。</li>
+<li>水果隐藏，玩家需要找到隐藏的水果才能完成游戏。<br>  开始时，显示两秒，后隐藏。按空格可显示。<ul>
+<li>不可以真的隐藏，否则无法实现触碰功能<ul>
+<li>虚度：100<ul>
+<li>虚度： 100%透明</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>规定时间内完成游戏，超时则游戏失败。</li>
+<li>增加怪物，玩家需要避开怪物，碰到怪物会扣除生命值。<ul>
+<li>固定巡逻怪物</li>
+<li>怪物随机移动<ul>
+<li>初始位置随机<ul>
+<li>限定在迷宫中空白区域</li>
+<li>TODO: 开始后会出现乱飞的情况</li>
+</ul>
+</li>
+<li>TODO: 如何随机移动？</li>
+</ul>
+</li>
+<li>TODO: 怪物追踪玩家<ul>
+<li>使用？算法，计算从怪物到玩家的最短路径，然后沿着路径移动。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <hr>
-<h2 id="第三阶段：循环与重复（第-13-20-课）"><a href="#第三阶段：循环与重复（第-13-20-课）" class="headerlink" title="第三阶段：循环与重复（第 13-20 课）"></a>第三阶段：循环与重复（第 13-20 课）</h2><blockquote>
-<p>目标：理解循环概念，能用循环创作动画和图案</p>
-</blockquote>
-<p>Flying Mario (READ THE INSTRUCTIONS).sb3</p>
-<table>
-<thead>
-<tr>
-<th>课次</th>
-<th>主题</th>
-<th>知识点</th>
-<th>项目产出</th>
-<th>时间分配</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>13</td>
-<td>重复的魔法</td>
-<td>“重复 N 次”积木</td>
-<td>小树长大</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>14</td>
-<td>永不停歇</td>
-<td>“重复执行”积木</td>
-<td>小球反弹</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>15</td>
-<td>画笔入门</td>
-<td>落笔&#x2F;抬笔&#x2F;颜色&#x2F;粗细</td>
-<td>自由涂鸦板</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>16</td>
-<td>循环画图</td>
-<td>重复+转向&#x3D;图形</td>
-<td>图案生成器</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>17</td>
-<td>走路动画</td>
-<td>造型切换+循环</td>
-<td>走路的小人</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>18</td>
-<td>音乐记忆</td>
-<td>循环+音乐扩展</td>
-<td>音乐记忆游戏</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>19</td>
-<td>弹弹球</td>
-<td>循环+移动+碰边反弹</td>
-<td>弹球屏保</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>20</td>
-<td>弹球对战</td>
-<td>多角色+循环综合</td>
-<td>弹球对战游戏</td>
-<td>讲5+练45+展示10</td>
-</tr>
-</tbody></table>
-<p><strong>阶段产出</strong>：学生掌握循环思维，能做连续动画和画笔图案</p>
+<h1 id="猴子接香蕉（Monkey-Catch-Banana）"><a href="#猴子接香蕉（Monkey-Catch-Banana）" class="headerlink" title="猴子接香蕉（Monkey Catch Banana）"></a>猴子接香蕉（Monkey Catch Banana）</h1><h2 id="项目目标-1"><a href="#项目目标-1" class="headerlink" title="项目目标"></a>项目目标</h2><p>控制猴子接住从天空不断掉落的香蕉。</p>
+<p>通过本项目复习并学习：</p>
+<ul>
+<li>鼠标控制角色移动</li>
+<li>循环（重复执行）</li>
+<li><strong>克隆</strong></li>
+<li>随机数</li>
+</ul>
+<div style="position:relative;padding-bottom:75%;height:0;overflow:hidden;">
+<iframe
+  src="/scratch/Monkey Catch Banana.html"
+  style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+</iframe>
+</div>
+
+
+<h2 id="Part-1：香蕉掉落挑战（Banana-Catch）"><a href="#Part-1：香蕉掉落挑战（Banana-Catch）" class="headerlink" title="Part 1：香蕉掉落挑战（Banana Catch）"></a>Part 1：香蕉掉落挑战（Banana Catch）</h2><p>游戏介绍</p>
+<p>利用克隆功能，每隔一段时间建立香蕉分身，让香蕉从舞台顶部随机位置掉落。</p>
+<h3 id="游戏介绍："><a href="#游戏介绍：" class="headerlink" title="游戏介绍："></a>游戏介绍：</h3><ul>
+<li>使用鼠标控制猴子左右移动</li>
+<li>接住不断掉落的香蕉</li>
+<li>香蕉掉到底部自动消失</li>
+<li>接住香蕉播放吃香蕉音效</li>
+</ul>
+<h3 id="学习内容-2"><a href="#学习内容-2" class="headerlink" title="学习内容"></a>学习内容</h3><ul>
+<li>使用克隆建立多个香蕉<ul>
+<li>“克隆自己” &#x3D; 复制一个分身</li>
+<li>“当作为克隆体启动时” &#x3D; 分身出现后做什么</li>
+<li>克隆体和本体独立运行， 每个克隆体拥有独立的位置和运动状态<ul>
+<li>opt: “删除此克隆体” &#x3D; 用完后消失<ul>
+<li>符合“掉落物不断产生”的自然逻辑。</li>
+<li>每一个游戏对象都有生命周期。create → update → destroy</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>香蕉随机位置生成</li>
+</ul>
+<p>完成第一个版本：猴子能够接住不断掉落的香蕉。</p>
+<h2 id="Part-2：香蕉收集大挑战（Banana-Collector）"><a href="#Part-2：香蕉收集大挑战（Banana-Collector）" class="headerlink" title="Part 2：香蕉收集大挑战（Banana Collector）"></a>Part 2：香蕉收集大挑战（Banana Collector）</h2><ul>
+<li>增加计分功能，接住香蕉得分。</li>
+<li>增加计时器，规定时间内接住尽可能多的香蕉。<ul>
+<li>在该时间内，接住x个香蕉，游戏胜利。</li>
+</ul>
+</li>
+<li>键盘控制猴子移动。</li>
+<li>增加虫子，碰到虫子扣分。</li>
+<li>香蕉效果优化<ul>
+<li>大小随机变化。大香蕉速度快，小香蕉速度慢。</li>
+</ul>
+</li>
+</ul>
 <hr>
-<h2 id="第四阶段：条件与判断（第-21-28-课）"><a href="#第四阶段：条件与判断（第-21-28-课）" class="headerlink" title="第四阶段：条件与判断（第 21-28 课）"></a>第四阶段：条件与判断（第 21-28 课）</h2><blockquote>
-<p>目标：理解”如果…那么”，能做简单交互游戏</p>
-</blockquote>
-<p>Dinko.sb3<br>running_cat.sb3</p>
-<table>
-<thead>
-<tr>
-<th>课次</th>
-<th>主题</th>
-<th>知识点</th>
-<th>项目产出</th>
-<th>时间分配</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>21</td>
-<td>如果碰到…</td>
-<td>“如果那么”积木、碰边反弹</td>
-<td>自动反弹球</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>22</td>
-<td>走迷宫</td>
-<td>碰到颜色检测</td>
-<td>简单迷宫游戏</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>23</td>
-<td>二选一</td>
-<td>“如果…否则”积木</td>
-<td>红绿灯判断</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>24</td>
-<td>键盘小达人</td>
-<td>按键侦测+条件</td>
-<td>刺猬快跑</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>25</td>
-<td>打地鼠</td>
-<td>随机出现+点击侦测</td>
-<td>捉鬼游戏</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>26</td>
-<td>计分板</td>
-<td>变量（得分）初步</td>
-<td>取水果+计分</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>27</td>
-<td>计时器</td>
-<td>变量（时间）+倒计时</td>
-<td>30秒挑战</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>28</td>
-<td>猫捉老鼠</td>
-<td>条件+循环+变量综合</td>
-<td>猫捉老鼠完整游戏</td>
-<td>讲5+练45+展示10</td>
-</tr>
-</tbody></table>
-<p><strong>阶段产出</strong>：学生能独立做出有计分的互动小游戏</p>
+<h1 id="青蛙过马路（Frogger）"><a href="#青蛙过马路（Frogger）" class="headerlink" title="青蛙过马路（Frogger）"></a>青蛙过马路（Frogger）</h1><h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>控制青蛙穿越繁忙的马路，避开来往的汽车，到达终点收集苹果。</p>
+<p>通过本项目复习并学习：</p>
+<ul>
+<li>键盘控制角色移动</li>
+<li>循环（重复执行）</li>
+<li>碰撞检测</li>
+<li><strong>广播消息</strong></li>
+<li>克隆</li>
+</ul>
+<div style="position:relative;padding-bottom:75%;height:0;overflow:hidden;">
+<iframe
+  src="/scratch/Frogger.html"
+  style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+</iframe>
+</div>
+
+
+<h2 id="Part-1：青蛙过马路（Cross-the-Road）"><a href="#Part-1：青蛙过马路（Cross-the-Road）" class="headerlink" title="Part 1：青蛙过马路（Cross the Road）"></a>Part 1：青蛙过马路（Cross the Road）</h2><h3 id="游戏介绍-1"><a href="#游戏介绍-1" class="headerlink" title="游戏介绍"></a>游戏介绍</h3><p>控制青蛙穿越马路，避开来往的汽车，到达终点收集苹果。</p>
+<p>玩家需要：</p>
+<ul>
+<li>使用方向键控制青蛙移动</li>
+<li>汽车持续在道路上行驶</li>
+<li>被汽车撞到后返回起点</li>
+<li>收集苹果后重新开始下一轮</li>
+</ul>
+<h3 id="学习内容-3"><a href="#学习内容-3" class="headerlink" title="学习内容"></a>学习内容</h3><ol>
+<li>使用方向键控制角色移动</li>
+<li>使用克隆建立多辆汽车</li>
+<li>汽车自动移动</li>
+<li>碰撞检测（汽车与青蛙）</li>
+<li>广播<ul>
+<li>广播角色被撞击</li>
+<li>广播收集苹果</li>
+<li>广播游戏开始、游戏结束</li>
+</ul>
+</li>
+</ol>
+<p>完成第一个版本：玩家能够控制青蛙成功穿越马路并收集苹果。</p>
 <hr>
-<h2 id="第五阶段：创意综合（第-29-36-课）"><a href="#第五阶段：创意综合（第-29-36-课）" class="headerlink" title="第五阶段：创意综合（第 29-36 课）"></a>第五阶段：创意综合（第 29-36 课）</h2><blockquote>
-<p>目标：综合运用所学，发展创意表达能力</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>课次</th>
-<th>主题</th>
-<th>知识点</th>
-<th>项目产出</th>
-<th>时间分配</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>29</td>
-<td>创意画板</td>
-<td>画笔进阶+多工具</td>
-<td>创意画板</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>30</td>
-<td>下雪啦</td>
-<td>克隆积木</td>
-<td>雪花飘落</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>31</td>
-<td>满天星</td>
-<td>随机数+画笔</td>
-<td>随机星空</td>
-<td>讲10+练40+分享10</td>
-</tr>
-<tr>
-<td>32</td>
-<td>我的故事</td>
-<td>自创剧情+多场景</td>
-<td>原创动画故事</td>
-<td>讲5+练50+分享5</td>
-</tr>
-<tr>
-<td>33</td>
-<td>我的游戏</td>
-<td>自创游戏规则</td>
-<td>原创小游戏</td>
-<td>讲5+练50+分享5</td>
-</tr>
-<tr>
-<td>34</td>
-<td>汽车竞速</td>
-<td>综合互动游戏</td>
-<td>汽车竞速游戏</td>
-<td>讲5+练50+分享5</td>
-</tr>
-<tr>
-<td>35</td>
-<td>作品打磨</td>
-<td>美化&#x2F;调试&#x2F;完善</td>
-<td>精品化一个作品</td>
-<td>全程实践60</td>
-</tr>
-<tr>
-<td>36</td>
-<td>作品展示会</td>
-<td>演示&#x2F;互评&#x2F;颁奖</td>
-<td>学期成果展</td>
-<td>展示+互评60</td>
-</tr>
-</tbody></table>
-<p><strong>阶段产出</strong>：每人至少 1 个精品原创作品（故事&#x2F;游戏&#x2F;贺卡）</p>
+<h2 id="Part-2：青蛙挑战赛（Frogger-Challenge）"><a href="#Part-2：青蛙挑战赛（Frogger-Challenge）" class="headerlink" title="Part 2：青蛙挑战赛（Frogger Challenge）"></a>Part 2：青蛙挑战赛（Frogger Challenge）</h2><ul>
+<li>增加计分板，每收集一个苹果获得一分。</li>
+<li>增加倒计时，在规定时间内获得目标分数即可获胜，否则游戏失败。</li>
+<li>增加汽车随机颜色或造型，使游戏画面更加丰富。</li>
+<li>增加碰撞特效与音效，提升游戏体验。</li>
+</ul>
+<hr>
+<h1 id="放烟花"><a href="#放烟花" class="headerlink" title="放烟花"></a>放烟花</h1><h2 id="项目目标-2"><a href="#项目目标-2" class="headerlink" title="项目目标"></a>项目目标</h2><p>制作一个烟花表演小游戏，让烟花从地面随机位置升空，并在空中绽放出绚丽的烟花效果。</p>
+<p>通过本项目复习并学习：</p>
+<ul>
+<li>自定义积木（函数）</li>
+<li>画笔</li>
+<li>随机数</li>
+<li>变量</li>
+</ul>
+<div style="position:relative;padding-bottom:75%;height:0;overflow:hidden;">
+<iframe
+  src="/scratch/Firework V2.html"
+  style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+</iframe>
+</div>
+
+<h2 id="Part-1：烟花升空（Firework-Launch）"><a href="#Part-1：烟花升空（Firework-Launch）" class="headerlink" title="Part 1：烟花升空（Firework Launch）"></a>Part 1：烟花升空（Firework Launch）</h2><h2 id="游戏介绍-2"><a href="#游戏介绍-2" class="headerlink" title="游戏介绍"></a>游戏介绍</h2><p>利用函数与画笔功能，让烟花从舞台下方向天空发射，并绘制出烟花飞行轨迹。</p>
+<h2 id="学习内容-4"><a href="#学习内容-4" class="headerlink" title="学习内容"></a>学习内容</h2><ol>
+<li>光迹效果&#x2F;光影轨迹效果&#x2F;拖尾效果<ul>
+<li>让移动中的东西“不只是移动过去”，而是在经过的位置留下“残影”</li>
+<li>让轨迹逐渐消失，看起来像发光。光束，手电筒</li>
+<li>烟花上升的过程住，主体最亮 后面轨迹逐渐变淡<ul>
+<li>亮点 -&gt; 淡影 -&gt; 消失</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>图章<br> 像拿一个透明印章，在舞台上盖下角色当前的样子。盖下之后，印出来的图案不会随着角色移动，而是留在舞台上。<ul>
+<li>vs 克隆：<ul>
+<li>克隆：克隆体是一个独立的角色，拥有自己的位置和运动状态。克隆体可以移动、旋转、改变造型等。</li>
+<li>图章：图章是一个静态的图像，盖下之后不会移动，也不会改变造型。图章只是一个印记，无法与其他角色互动。主要用来做背景效果</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>自定义积木（函数）<ul>
+<li>给一组动作取一个名字<ul>
+<li>如果一个动作会经常使用，我们可以把它打包成一个新的积木，以后只需要点击这个积木，就可以执行这一整套动作。</li>
+<li>让程序更简洁，易于理解和维护。</li>
+</ul>
+</li>
+<li><strong>参数</strong><ul>
+<li>给自定义积木添加参数，让同一个积木可以根据不同的输入执行不同的动作。</li>
+<li>例如：发射烟花的高度、颜色、速度等都可以作为参数传入自定义积木，使得烟花效果更加丰富多样。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Part-2：烟花绽放（Firework-Explosion）"><a href="#Part-2：烟花绽放（Firework-Explosion）" class="headerlink" title="Part 2：烟花绽放（Firework Explosion）"></a>Part 2：烟花绽放（Firework Explosion）</h2><ul>
+<li>烟花飞到最高点后产生爆炸效果。</li>
+<li>爆炸粒子向四周飞散，并逐渐消失。</li>
+<li>每次爆炸颜色随机，形成不同的烟花效果。</li>
+<li>多个烟花能够连续发射，形成完整的烟花表演。</li>
+</ul>
+<hr>
+<h1 id="翻翻卡（Memory-Match）"><a href="#翻翻卡（Memory-Match）" class="headerlink" title="翻翻卡（Memory Match）"></a>翻翻卡（Memory Match）</h1><h2 id="项目介绍-1"><a href="#项目介绍-1" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>点击卡牌翻开图案，找出两张相同的卡牌完成配对，直到所有卡牌配对成功。</p>
+<p>通过本项目复习并学习：</p>
+<ul>
+<li><strong>列表</strong></li>
+<li><strong>克隆</strong></li>
+<li><strong>广播</strong></li>
+<li>变量</li>
+<li>随机数</li>
+</ul>
+<div style="position:relative;padding-bottom:75%;height:0;overflow:hidden;">
+<iframe
+  src="/scratch/Memory Match.html"
+  style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+</iframe>
+</div>
+
+
+<h2 id="Part-1：翻翻卡（Memory-Match）"><a href="#Part-1：翻翻卡（Memory-Match）" class="headerlink" title="Part 1：翻翻卡（Memory Match）"></a>Part 1：翻翻卡（Memory Match）</h2><h3 id="游戏介绍-3"><a href="#游戏介绍-3" class="headerlink" title="游戏介绍"></a>游戏介绍</h3><p>点击卡牌，卡牌会翻开显示正面图案；再点击第二张卡牌，如果图案相同则配对成功并消失，如果不同则两张卡牌重新翻回背面。</p>
+<p>玩家需要：</p>
+<ul>
+<li>点击卡牌，观察并记住图案位置</li>
+<li>依次点击两张卡牌进行配对</li>
+<li>配对成功的卡牌消失，配对失败的卡牌翻回背面</li>
+<li>找出全部卡牌完成游戏</li>
+</ul>
+<h3 id="学习内容-5"><a href="#学习内容-5" class="headerlink" title="学习内容"></a>学习内容</h3><ol>
+<li>使用<strong>列表</strong>存储卡牌内容（水果种类），固定顺序</li>
+<li>使用<strong>克隆</strong>根据列表内容批量生成每一张卡牌<ul>
+<li>局部变量“编号”： 用来确定自己对应列表中的第几张卡牌，以及应该显示在哪个位置</li>
+</ul>
+</li>
+<li>使用<strong>广播</strong>在两张卡牌之间传递”是否配对成功”的消息<ul>
+<li>广播判断配对结果</li>
+<li>广播通知另一张卡牌隐藏（配对成功）</li>
+</ul>
+</li>
+<li>使用全局变量记录”上一张翻开的卡牌编号”，实现两张卡牌之间的比较</li>
+</ol>
+<p>完成第一个版本：玩家能够翻开卡牌、判断配对、消除卡牌，直到所有卡牌配对完成。</p>
+<h2 id="Part-2：翻翻卡挑战赛（Memory-Match-Challenge）"><a href="#Part-2：翻翻卡挑战赛（Memory-Match-Challenge）" class="headerlink" title="Part 2：翻翻卡挑战赛（Memory Match Challenge）"></a>Part 2：翻翻卡挑战赛（Memory Match Challenge）</h2><ul>
+<li>增加<strong>翻卡次数</strong>统计，记录玩家一共翻了多少次卡牌，鼓励玩家用更少的次数完成配对。</li>
+<li>增加<strong>倒计时</strong>，在规定时间内完成全部配对即可获胜，超时则广播”overtime”提示游戏结束。</li>
+<li>随即洗牌</li>
+<li>修改为函数的形式</li>
+</ul>
+<hr>
+<h1 id="贪吃蛇（Snake）"><a href="#贪吃蛇（Snake）" class="headerlink" title="贪吃蛇（Snake）"></a>贪吃蛇（Snake）</h1><h2 id="项目介绍-2"><a href="#项目介绍-2" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>控制蛇移动吃到食物，蛇身会不断变长，撞到自己或边界则游戏结束。</p>
+<p>通过本项目复习并学习：</p>
+<ul>
+<li><strong>列表</strong></li>
+<li><strong>画笔（图章）</strong></li>
+<li>键盘控制角色移动</li>
+<li>循环（重复执行）</li>
+<li>碰撞检测</li>
+</ul>
+<div style="position:relative;padding-bottom:75%;height:0;overflow:hidden;">
+<iframe
+  src="/scratch/snake.html"
+  style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+</iframe>
+</div>
+
+
+<h2 id="Part-1：贪吃蛇（Snake）"><a href="#Part-1：贪吃蛇（Snake）" class="headerlink" title="Part 1：贪吃蛇（Snake）"></a>Part 1：贪吃蛇（Snake）</h2><h3 id="游戏介绍-4"><a href="#游戏介绍-4" class="headerlink" title="游戏介绍"></a>游戏介绍</h3><p>控制蛇在网格中移动，吃到食物后蛇身变长一节，撞到自己身体或撞到边界则游戏结束。</p>
+<p>玩家需要：</p>
+<ul>
+<li>使用方向键控制蛇头移动方向</li>
+<li>蛇每移动一步，身体跟着往前挪一格</li>
+<li>吃到食物后蛇身变长，并在新位置重新生成食物</li>
+<li>撞到自己身体或撞到边界时游戏结束</li>
+</ul>
+<h3 id="学习内容-6"><a href="#学习内容-6" class="headerlink" title="学习内容"></a>学习内容</h3><ol>
+<li>使用<strong>列表</strong>（蛇身x、蛇身y）记录蛇身每一节的坐标，模拟身体随移动而变化<ul>
+<li>每走一步，把新的头部坐标<strong>插入</strong>到列表最前面，再把列表<strong>最后一项删除</strong>，实现”整条蛇往前挪一格”的效果</li>
+<li>吃到食物时不删除尾部坐标，从而让蛇变长一节，即将新的头部坐标插入到列表最前面，但不删除尾部坐标</li>
+</ul>
+</li>
+<li>使用<strong>画笔（图章）</strong>，每一帧先清空画面，再按照列表中的坐标依次盖章，画出完整的蛇身</li>
+<li>使用列表中的坐标进行<strong>碰撞检测</strong>：<ul>
+<li>蛇头与食物坐标重合 → 吃到食物</li>
+<li>蛇头与自己身体列表中的坐标重合 → 撞到自己，游戏结束</li>
+<li>蛇头超出边界范围 → 游戏结束</li>
+</ul>
+</li>
+</ol>
+<p>完成第一个版本：玩家能够控制蛇移动、吃到食物变长、撞到自己或边界后结束游戏。</p>
+<hr>
+<h2 id="Part-2：贪吃蛇挑战赛（Snake-Challenge）"><a href="#Part-2：贪吃蛇挑战赛（Snake-Challenge）" class="headerlink" title="Part 2：贪吃蛇挑战赛（Snake Challenge）"></a>Part 2：贪吃蛇挑战赛（Snake Challenge）</h2><ul>
+<li>增加<strong>计分板</strong>，每吃到一个食物获得一分。</li>
+<li>增加<strong>倒计时</strong>或<strong>速度递增</strong>机制，随着分数增加蛇的移动速度变快，提升挑战难度。</li>
+<li>增加蛇身<strong>颜色渐变</strong>效果，从蛇头到蛇尾颜色依次变化，提升视觉效果。</li>
+<li>增加撞击&#x2F;吃到食物的音效，提升游戏体验。</li>
+</ul>
 
   </article>
 
