@@ -1,115 +1,439 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+
+
+
+<html lang="en" class="h-full scroll-smooth">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>db leetcode easy | rirorinn</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="date相关   Run 正确，但 Submit 错误 使用的数据不同   DATE 不能直接进行 +1 &#x2F; -1 运算  12ON w2.recordDate &#x3D; (w1.recordDate - 1)-- eg: 2015-02-01 &#x3D; 2015-02-00  DATE_ADD() DATE_SUB() DATEDIFF() TIMESTAMPDIFF()     TODO： A">
-<meta property="og:type" content="article">
-<meta property="og:title" content="db leetcode easy">
-<meta property="og:url" content="https://rirorinn.github.io/2026/07/16/db-leetcode-easy/index.html">
-<meta property="og:site_name" content="rirorinn">
-<meta property="og:description" content="date相关   Run 正确，但 Submit 错误 使用的数据不同   DATE 不能直接进行 +1 &#x2F; -1 运算  12ON w2.recordDate &#x3D; (w1.recordDate - 1)-- eg: 2015-02-01 &#x3D; 2015-02-00  DATE_ADD() DATE_SUB() DATEDIFF() TIMESTAMPDIFF()     TODO： A">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://rirorinn.github.io/db-leetcode-easy/Rising%20Temperature.png">
-<meta property="og:image" content="https://rirorinn.github.io/db-leetcode-easy/Average%20Selling%20Price.png">
-<meta property="og:image" content="https://rirorinn.github.io/db-leetcode-easy/1280.png">
-<meta property="og:image" content="https://rirorinn.github.io/db-leetcode-easy/left%20join_issue.png">
-<meta property="article:published_time" content="2026-07-16T11:31:00.000Z">
-<meta property="article:modified_time" content="2026-07-18T15:59:57.460Z">
-<meta property="article:author" content="rirorinn">
-<meta property="article:tag" content="SQL">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rirorinn.github.io/db-leetcode-easy/Rising%20Temperature.png">
-  
-    <link rel="alternate" href="/atom.xml" title="rirorinn" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content="Hexo " />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    
 
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
 
-<meta name="generator" content="Hexo 8.1.2"></head>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">rirorinn</a>
-      </h1>
-      
+<link rel="prefetch" as="script" href="https://cdn.jsdelivr.net/npm/lightgallery@2.9.0/lightgallery.min.js" />
+<link rel="prefetch" as="style" href="https://cdn.jsdelivr.net/npm/lightgallery@2.9.0/css/lightgallery.min.css" />
+<link rel="prefetch" as="script" href="/js/lightgallery.min.js?v=28acbf30" />
+
+
+
+    
+    
+<script data-cfasync="false">
+;(() => {
+    // Progressive enhancement marker (mobile nav CSS uses html.js before paint).
+    document.documentElement.classList.add('js');
+    const shiro = (window.__shiro = window.__shiro || {});
+    const defaultTheme = "light";
+    shiro.themeDefault = defaultTheme;
+    
+    const states = defaultTheme === 'system' ? ['system', 'light', 'dark'] : ['light', 'dark'];
+    let saved;
+    try { saved = localStorage.getItem('theme'); } catch (_) {}
+    const state = saved && states.includes(saved) ? saved : defaultTheme;
+    const html = document.documentElement;
+    html.setAttribute('data-theme-state', state);
+    const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    // Pagefind dark contract only when search is enabled.
+    const syncPagefindTheme = false;
+    shiro.searchEnabled = syncPagefindTheme;
+    // Single source for theme-toggle.js and system-follow listener.
+    const applyResolvedTheme = (dark) => {
+        html.setAttribute('data-theme', dark ? 'dark' : 'light');
+        if (syncPagefindTheme) {
+            if (dark) html.setAttribute('data-pf-theme', 'dark');
+            else html.removeAttribute('data-pf-theme');
+        }
+        html.style.colorScheme = dark ? 'dark' : 'light';
+    };
+    shiro.applyResolvedTheme = applyResolvedTheme;
+    applyResolvedTheme(state === 'dark' || (state !== 'light' && darkQuery.matches));
+    if (defaultTheme === 'system') {
+        // Follow OS theme while in system mode even if the toggle script is absent.
+        const followSystem = () => {
+            if (html.getAttribute('data-theme-state') !== 'system') return;
+            applyResolvedTheme(darkQuery.matches);
+        };
+        if (darkQuery.addEventListener) darkQuery.addEventListener('change', followSystem);
+        else if (darkQuery.addListener) darkQuery.addListener(followSystem);
+    }
+    // Preloader skip: the session collection must contain this page's font-bundle URL.
+    const fontsReadyToken = "https://fonts.googleapis.com/css2?family=Cardo:wght@400;700\u0026family=Yuji+Syuku\u0026family=Zen+Old+Mincho:wght@400;600\u0026family=Cormorant+Garamond:wght@400;600\u0026family=Fira+Code:wght@400;500\u0026display=swap";
+    shiro.fontsReadyToken = fontsReadyToken;
+    try {
+        const storedFontsReady = sessionStorage.getItem('shiro:fonts-ready');
+        const readyFontTokens = storedFontsReady === fontsReadyToken
+            ? [storedFontsReady]
+            : JSON.parse(storedFontsReady || '[]');
+        if (
+            fontsReadyToken
+            && Array.isArray(readyFontTokens)
+            && readyFontTokens.indexOf(fontsReadyToken) !== -1
+        ) {
+            html.classList.add('shiro-preloader-done');
+        }
+    } catch (_) {}
+})();
+</script>
+
+    
+
+    
+
+
+
+
+
+
+
+    
+
+
+<title>db leetcode easy | rirorinn</title>
+
+
+<meta name="description" content="date相关 Run 正确，但 Submit 错误 使用的数据不同 DATE 不能直接进行 +1 / -1 运算 DATE_ADD() DATE_SUB() DATEDIFF() TIMESTAMPDIFF() TODO： Average Selling Price Wrong aggregation SUM() is over-counted group by 为什么没有去重？ 为什么加上..." />
+
+
+<meta name="author" content="rirorinn" />
+
+
+<meta name="keywords" content="SQL" />
+
+
+<meta property="og:title" content="db leetcode easy | rirorinn" />
+
+<meta property="og:description" content="date相关 Run 正确，但 Submit 错误 使用的数据不同 DATE 不能直接进行 +1 / -1 运算 DATE_ADD() DATE_SUB() DATEDIFF() TIMESTAMPDIFF() TODO： Average Selling Price Wrong aggregation SUM() is over-counted group by 为什么没有去重？ 为什么加上..." />
+
+<meta property="og:url" content="https://rirorinn.github.io/2026/07/16/db-leetcode-easy/index.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="rirorinn" />
+
+
+<meta property="og:locale" content="en_US" />
+
+
+<meta property="og:image" content="https://rirorinn.github.io/db-leetcode-easy/Rising%20Temperature.png" />
+
+<meta property="og:image:alt" content="197. Rising Temperature" />
+
+
+
+<meta property="og:image:width" content="2729" />
+<meta property="og:image:height" content="1598" />
+
+
+
+
+<meta property="article:published_time" content="2026-07-16T11:31:00.000Z" />
+
+
+<meta property="article:modified_time" content="2026-07-18T15:59:57.460Z" />
+
+
+
+<meta property="article:tag" content="SQL" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="db leetcode easy | rirorinn" />
+
+<meta name="twitter:description" content="date相关 Run 正确，但 Submit 错误 使用的数据不同 DATE 不能直接进行 +1 / -1 运算 DATE_ADD() DATE_SUB() DATEDIFF() TIMESTAMPDIFF() TODO： Average Selling Price Wrong aggregation SUM() is over-counted group by 为什么没有去重？ 为什么加上..." />
+
+
+<meta name="twitter:image" content="https://rirorinn.github.io/db-leetcode-easy/Rising%20Temperature.png" />
+
+<meta name="twitter:image:alt" content="197. Rising Temperature" />
+
+
+
+<link rel="canonical" href="https://rirorinn.github.io/2026/07/16/db-leetcode-easy/index.html" />
+
+
+
+
+
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"db leetcode easy","mainEntityOfPage":{"@type":"WebPage","@id":"https://rirorinn.github.io/2026/07/16/db-leetcode-easy/"},"description":"date相关 Run 正确，但 Submit 错误 使用的数据不同 DATE 不能直接进行 +1 / -1 运算 DATE_ADD() DATE_SUB() DATEDIFF() TIMESTAMPDIFF() TODO： Average Selling Price Wrong aggregation SUM() is over-counted group by 为什么没有去重？ 为什么加上...","image":["https://rirorinn.github.io/db-leetcode-easy/Rising%20Temperature.png"],"datePublished":"2026-07-16T11:31:00.000Z","dateModified":"2026-07-18T15:59:57.460Z","author":{"@type":"Person","name":"rirorinn"},"publisher":{"@type":"Organization","name":"rirorinn","logo":{"@type":"ImageObject","url":"https://rirorinn.github.io/favicon.svg","width":112,"height":112}},"keywords":"SQL"}]</script>
+
+
+
+<link rel="icon" href="/favicon.svg" />
+
+
+
+
+    
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Yuji+Syuku&family=Zen+Old+Mincho:wght@400;600&family=Cormorant+Garamond:wght@400;600&family=Fira+Code:wght@400;500&display=swap" />
+
+<link rel="stylesheet" href="/css/style.min.css?v=72525358">
+
+<link rel="stylesheet" href="/css/code.min.css?v=cb0da316">
+
+
+<script defer data-cfasync="false" src="/js/preloader.min.js?v=a3906902"></script>
+
+</head>
+
+
+<body class="h-full fog-bg text-text-body" data-shiro-lightgallery="true">
+    <!-- Preloader: font CSS load + fonts.ready, or preloader.min.js deadline. -->
+    <div id="shiroPreloader" class="shiro-preloader" aria-hidden="true">
+        <div class="shiro-preloader-ripple" aria-hidden="true">
+            <span class="shiro-preloader-ring"></span>
+            <span class="shiro-preloader-ring"></span>
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://rirorinn.github.io"></form>
-      </div>
+    <a href="#main-content" class="shiro-skip-link">Skip to content</a>
+    
+
+    
+    <div id="progressBar" class="progress-bar" aria-hidden="true"></div>
+    
+    
+    <div id="backToTopSentinel" class="back-to-top-sentinel" aria-hidden="true"></div>
+    
+
+    <div class="min-h-full px-4 pt-14 pb-6 md:pb-5">
+
+        <!-- Paper Card -->
+        <div
+            class="paper mx-auto w-full max-w-4xl rounded-xl px-5 sm:px-8 md:px-12 lg:px-14 pt-10 pb-6 md:pt-12 md:pb-8">
+
+            
+
+
+<header data-pagefind-ignore>
+
+    <div class="flex items-start justify-center">
+        <div class="text-center">
+            <div class="relative inline-block">
+                
+                <p class="site-title">
+                    <a href="/">rirorinn</a>
+                </p>
+                
+                <!-- Seal: Mathematically Centered -->
+                
+            </div>
+            
+            
+            
+            <div class="mt-3 sm:mt-4 flex items-center justify-center gap-2">
+                
+                
+                
+                <button id="themeToggle" type="button" class="focus-elegant header-pill-btn" aria-label="Light" data-label-system="System" data-label-light="Light" data-label-dark="Dark" disabled>
+                    
+<svg data-icon="system" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="2" y="3" width="20" height="14" rx="2" stroke-width="1.5"/>
+    <path d="M8 21h8M12 17v4" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                    
+<svg data-icon="light" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="4" stroke-width="1.5"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                    
+<svg data-icon="dark" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                </button>
+                
+                
+            </div>
+            
+        </div>
     </div>
-  </div>
 </header>
 
-      <div class="outer">
-        <section id="main"><article id="post-db-leetcode-easy" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/07/16/db-leetcode-easy/" class="article-date">
-  <time class="dt-published" datetime="2026-07-16T11:31:00.000Z" itemprop="datePublished">2026-07-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      db leetcode easy
-    </h1>
-  
+<!-- Navigation -->
 
-      </header>
+<nav class="mt-8 md:mt-10" aria-label="Menu" data-pagefind-ignore>
+    <!-- Mobile Toggle -->
+    <div class="flex items-center justify-center md:hidden">
+        
+        <button id="menuBtn" type="button"
+            class="focus-elegant inline-flex cursor-pointer items-center gap-2 rounded-full border border-border-strong bg-paper/95 px-4 py-2 text-sm text-text-body shadow-xs"
+            aria-expanded="false" aria-controls="mobileMenu" disabled>
+            <span class="text-base leading-none tracking-widest">Menu</span>
+            
+<svg class="size-4 text-text-chrome transition-transform duration-200" id="menuChevron"
+    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd"
+        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+        clip-rule="evenodd" />
+</svg>
+
+        </button>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:block">
+        <ul class="nav-desktop flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-base text-text-body px-4">
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/">Home</a>
+</li>
+            
+            <li class="text-text-subtle select-none" role="separator" aria-hidden="true">/</li>
+            
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/archives">Archives</a>
+</li>
+            
+            <li class="text-text-subtle select-none" role="separator" aria-hidden="true">/</li>
+            
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/tags">Tags</a>
+</li>
+            
+            <li class="text-text-subtle select-none" role="separator" aria-hidden="true">/</li>
+            
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/about">About</a>
+</li>
+            
+            
+        </ul>
+    </div>
+
+    <!-- Mobile Menu Panel: open without JS; html.js collapses before paint until toggled. -->
+    <div id="mobileMenu" class="menu-panel md:hidden mt-4" data-open="false">
+        <ul
+            class="mx-auto max-w-sm max-h-menu overflow-y-auto rounded-2xl border border-border-strong bg-paper/95 shadow-xs">
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/">Home</a>
+</li>
+            
+            <li class="h-px bg-border-decorative" role="separator" aria-hidden="true"></li>
+            
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/archives">Archives</a>
+</li>
+            
+            <li class="h-px bg-border-decorative" role="separator" aria-hidden="true"></li>
+            
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/tags">Tags</a>
+</li>
+            
+            <li class="h-px bg-border-decorative" role="separator" aria-hidden="true"></li>
+            
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/about">About</a>
+</li>
+            
+            
+        </ul>
+    </div>
     
-    <div class="e-content article-entry" itemprop="articleBody">
-      
+    <script data-cfasync="false">
+    if (document.documentElement.classList.contains('js')) {
+        var menuPanel = document.getElementById('mobileMenu');
+        if (menuPanel) menuPanel.inert = true;
+    }
+    </script>
+</nav>
+
+
+
+            <!-- Main Content -->
+            <main id="main-content" class="section-divider" tabindex="-1">
+                
+
+
+
+
+
+
+
+
+<article class="py-2">
+    <header class="text-center mb-8">
+        
+        <h1 class="page-title mb-4" data-pagefind-body data-pagefind-meta="title">
+            db leetcode easy
+        </h1>
+        
+        
+
+
+
+
+
+
+
+
+<div class="mb-4 flex flex-wrap items-center justify-center gap-y-1 text-text-chrome gap-x-4 text-sm">
+    <div class="flex items-center gap-1.5">
+        
+<svg class="size-4 text-text-subtle shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+
+        <a href="/archives/2026/" class="oldstyle-nums link-chrome"><time datetime="2026-07-16">2026/07/16</time></a>
+    </div>
+    
+    
+</div>
+
+        
+    </header>
+
+    
+
+    <div class="prose-shiro" data-pagefind-body>
         <ol>
-<li>date相关<br><img src="/./db-leetcode-easy/Rising%20Temperature.png" alt="197. Rising Temperature"></li>
+<li>date相关<br><img src="/./db-leetcode-easy/Rising%20Temperature.png" alt="197. Rising Temperature" decoding="async" width="2729" height="1598" loading="eager"></li>
 </ol>
 <ul>
 <li>Run 正确，但 Submit 错误<ul>
 <li>使用的数据不同</li>
 </ul>
 </li>
-<li><strong>DATE 不能直接进行 +1 &#x2F; -1 运算</strong>  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ON</span> w2.recordDate <span class="operator">=</span> (w1.recordDate <span class="operator">-</span> <span class="number">1</span>)</span><br><span class="line"><span class="comment">-- eg: 2015-02-01 = 2015-02-00</span></span><br></pre></td></tr></table></figure>
+<li><strong>DATE 不能直接进行 +1 &#x2F; -1 运算</strong>  <figure class="not-prose highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ON</span> w2.recordDate <span class="operator">=</span> (w1.recordDate <span class="operator">-</span> <span class="number">1</span>)</span><br><span class="line"><span class="comment">-- eg: 2015-02-01 = 2015-02-00</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>DATE_ADD()</code></li>
 <li><code>DATE_SUB()</code></li>
@@ -119,7 +443,7 @@
 </li>
 </ul>
 <ol start="2">
-<li>TODO： Average Selling Price<br><img src="/./db-leetcode-easy/Average%20Selling%20Price.png" alt="1251.Average Selling Price"></li>
+<li>TODO： Average Selling Price<br><img src="/./db-leetcode-easy/Average%20Selling%20Price.png" alt="1251.Average Selling Price" decoding="async" loading="lazy" width="3053" height="1508"></li>
 </ol>
 <ul>
 <li>Wrong aggregation <ul>
@@ -135,171 +459,138 @@
 </li>
 </ul>
 <ol start="3">
-<li><code>cross join</code><br><img src="/./db-leetcode-easy/1280.png" alt="1280.Students and Examinations"></li>
+<li><code>cross join</code><br><img src="/./db-leetcode-easy/1280.png" alt="1280.Students and Examinations" decoding="async" loading="lazy" width="3053" height="1539"></li>
 </ol>
 <ul>
 <li>count结果为6，同上述问题一样，left join会重复<ul>
 <li><code>ON ex.student_id = st.student_id</code> 只限定了id，subject_name没有：</li>
 </ul>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Alice Math        -&gt; Math</span><br><span class="line">Alice Math        -&gt; Math</span><br><span class="line">Alice Math        -&gt; Physics</span><br><span class="line"></span><br><span class="line">Alice Physics     -&gt; Math</span><br><span class="line">Alice Physics     -&gt; Math</span><br><span class="line">Alice Physics     -&gt; Physics</span><br><span class="line"></span><br><span class="line">Alice Programming -&gt; Math</span><br><span class="line">Alice Programming -&gt; Math</span><br><span class="line">Alice Programming -&gt; Physics</span><br></pre></td></tr></table></figure></li>
-<li>MySQL 没有<code>full join</code> 所以实现：  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1965. Employees With Missing Information</span></span><br><span class="line"><span class="keyword">SELECT</span> e.employee_id</span><br><span class="line"><span class="keyword">FROM</span> Employees e</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Salaries s</span><br><span class="line"><span class="keyword">ON</span> e.employee_id <span class="operator">=</span> s.employee_id</span><br><span class="line"><span class="keyword">WHERE</span> s.employee_id <span class="keyword">IS</span> <span class="keyword">NULL</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> s.employee_id</span><br><span class="line"><span class="keyword">FROM</span> Salaries s</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Employees e</span><br><span class="line"><span class="keyword">ON</span> s.employee_id <span class="operator">=</span> e.employee_id</span><br><span class="line"><span class="keyword">WHERE</span> e.employee_id <span class="keyword">IS</span> <span class="keyword">NULL</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> employee_id;</span><br></pre></td></tr></table></figure></li>
-<li><code>left join</code> 的匹配并不是<strong>严格</strong>按照on的条件<br><img src="/./db-leetcode-easy/left%20join_issue.png" alt="left%20join_issue"></li>
+  <figure class="not-prose highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Alice Math        -&gt; Math</span><br><span class="line">Alice Math        -&gt; Math</span><br><span class="line">Alice Math        -&gt; Physics</span><br><span class="line"></span><br><span class="line">Alice Physics     -&gt; Math</span><br><span class="line">Alice Physics     -&gt; Math</span><br><span class="line">Alice Physics     -&gt; Physics</span><br><span class="line"></span><br><span class="line">Alice Programming -&gt; Math</span><br><span class="line">Alice Programming -&gt; Math</span><br><span class="line">Alice Programming -&gt; Physics</span><br></pre></td></tr></table></figure></li>
+<li>MySQL 没有<code>full join</code> 所以实现：  <figure class="not-prose highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1965. Employees With Missing Information</span></span><br><span class="line"><span class="keyword">SELECT</span> e.employee_id</span><br><span class="line"><span class="keyword">FROM</span> Employees e</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Salaries s</span><br><span class="line"><span class="keyword">ON</span> e.employee_id <span class="operator">=</span> s.employee_id</span><br><span class="line"><span class="keyword">WHERE</span> s.employee_id <span class="keyword">IS</span> <span class="keyword">NULL</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> s.employee_id</span><br><span class="line"><span class="keyword">FROM</span> Salaries s</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Employees e</span><br><span class="line"><span class="keyword">ON</span> s.employee_id <span class="operator">=</span> e.employee_id</span><br><span class="line"><span class="keyword">WHERE</span> e.employee_id <span class="keyword">IS</span> <span class="keyword">NULL</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> employee_id;</span><br></pre></td></tr></table></figure></li>
+<li><code>left join</code> 的匹配并不是<strong>严格</strong>按照on的条件<br><img src="/./db-leetcode-easy/left%20join_issue.png" alt="left%20join_issue" decoding="async" loading="lazy" width="1038" height="1058"></li>
 </ul>
 <p>图片中的output第一行，s.employee_id为null，但是与e.employee_id&#x3D;2一行<br>null 那一行不是匹配出来的，而是 left join 补出来的。<br>    left join 的规则是：左表每一行必须保留。 e.employee_id&#x3D;2没有找到任何匹配项，所以右表所有列补 NULL</p>
 <ol start="4">
 <li>月份：<ul>
 <li>限定年月</li>
 </ul>
- <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WHERE</span> o.order_date <span class="keyword">like</span> <span class="string">&#x27;2020-02-%&#x27;</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">YEAR</span>(o.order_date)<span class="operator">=</span><span class="string">&#x27;2020&#x27;</span> <span class="keyword">AND</span> <span class="keyword">MONTH</span>(o.order_date)<span class="operator">=</span><span class="string">&#x27;02&#x27;</span></span><br><span class="line"><span class="comment">-- where o.order_date between &quot;2020-02-01&quot; and &quot;2020-02-29&quot;  </span></span><br></pre></td></tr></table></figure></li>
-<li><code>like</code> &#x2F; <code>regexp</code> &#x2F; <code>regexp_like</code> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;^[A-Za-z0-9_]+@[A-Za-z]+\\.com$&#x27;</span><br></pre></td></tr></table></figure>
- <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 3465. Find Products with Valid Serial Numbers</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> products</span><br><span class="line"><span class="keyword">where</span> regexp_like(</span><br><span class="line">    description,</span><br><span class="line">    <span class="string">&#x27;(^| )SN[0-9]&#123;4&#125;-[0-9]&#123;4&#125;( |$)&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;c&#x27;</span></span><br><span class="line">) <span class="keyword">order</span> <span class="keyword">by</span> product_id</span><br></pre></td></tr></table></figure></li>
+ <figure class="not-prose highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WHERE</span> o.order_date <span class="keyword">like</span> <span class="string">&#x27;2020-02-%&#x27;</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">YEAR</span>(o.order_date)<span class="operator">=</span><span class="string">&#x27;2020&#x27;</span> <span class="keyword">AND</span> <span class="keyword">MONTH</span>(o.order_date)<span class="operator">=</span><span class="string">&#x27;02&#x27;</span></span><br><span class="line"><span class="comment">-- where o.order_date between &quot;2020-02-01&quot; and &quot;2020-02-29&quot;  </span></span><br></pre></td></tr></table></figure></li>
+<li><code>like</code> &#x2F; <code>regexp</code> &#x2F; <code>regexp_like</code> <figure class="not-prose highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;^[A-Za-z0-9_]+@[A-Za-z]+\\.com$&#x27;</span><br></pre></td></tr></table></figure>
+ <figure class="not-prose highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 3465. Find Products with Valid Serial Numbers</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> products</span><br><span class="line"><span class="keyword">where</span> regexp_like(</span><br><span class="line">    description,</span><br><span class="line">    <span class="string">&#x27;(^| )SN[0-9]&#123;4&#125;-[0-9]&#123;4&#125;( |$)&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;c&#x27;</span></span><br><span class="line">) <span class="keyword">order</span> <span class="keyword">by</span> product_id</span><br></pre></td></tr></table></figure></li>
 <li><code>LENGTH(string)</code></li>
 </ol>
 
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="https://rirorinn.github.io/2026/07/16/db-leetcode-easy/" data-id="cuid0znZBhc4RnDzQQ8_oJbcu" data-title="db leetcode easy" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li></ul>
 
-    </footer>
-  </div>
-  
+    <!-- Tags -->
     
-<nav id="article-nav">
-  
-    <a href="/2026/07/18/db-leetcode-med/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
+    <div class="mt-8 flex flex-wrap gap-2">
         
-          db leetcode med
         
-      </div>
-    </a>
-  
-  
-    <a href="/2026/07/14/SQL-Fundamentals/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">SQL Fundamentals</div>
-    </a>
-  
-</nav>
+<a href="/tags/SQL/" class="tag-pill">
+    <svg class="size-3 text-text-subtle mr-2 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z" />
+        <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" />
+    </svg>
+    SQL
+    
+</a>
 
-  
+        
+    </div>
+    
+
+    
+    <!-- Post Navigation: Hexo's page.prev = newer post, page.next = older post -->
+    <nav class="section-divider flex justify-between items-center text-sm md:text-base" aria-label="Post navigation">
+        
+        <a href="/2026/07/18/db-leetcode-med/" class="post-nav-link group text-left" title="db leetcode med" aria-label="Newer post: db leetcode med">
+             <span aria-hidden="true">&larr;</span>
+             <span class="post-nav-title">db leetcode med</span>
+        </a>
+        
+
+        
+        <a href="/2026/07/14/SQL-Fundamentals/" class="post-nav-link group text-right" title="SQL Fundamentals" aria-label="Older post: SQL Fundamentals">
+            <span class="post-nav-title">SQL Fundamentals</span>
+            <span aria-hidden="true">&rarr;</span>
+        </a>
+        
+    </nav>
+
+
+    
+    
 </article>
 
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
+            </main>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scratch/" rel="tag">scratch</a></li></ul>
+            <footer class="section-divider site-footer" data-pagefind-ignore>
+    <div class="site-footer-meta text-center text-sm text-text-chrome leading-relaxed">
+        <p>&copy; <span class="oldstyle-nums">2026</span> rirorinn</p>
+        <p class="font-eng text-footnote tracking-wide opacity-90">Elegant theme by <a href="https://github.com/Acris/hexo-theme-shiro" target="_blank" rel="noopener noreferrer" class="link-chrome">Shiro</a> · Made by <a href="https://acris.me" target="_blank" rel="noopener noreferrer" class="link-chrome">Acris</a>
+                        with <span aria-label="love" title="love">❤️</span></p>
     </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/scratch/" style="font-size: 10px;">scratch</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/07/">July 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1970/01/">January 1970</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2026/07/18/db-leetcode-med/">db leetcode med</a>
-          </li>
-        
-          <li>
-            <a href="/2026/07/16/db-leetcode-easy/">db leetcode easy</a>
-          </li>
-        
-          <li>
-            <a href="/2026/07/14/SQL-Fundamentals/">SQL Fundamentals</a>
-          </li>
-        
-          <li>
-            <a href="/2026/07/09/scratch/">scratch</a>
-          </li>
-        
-          <li>
-            <a href="/1970/01/01/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2026 rirorinn<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
 </footer>
 
+        </div>
+
+        <!-- Note Text — decorative aside, not part of main content or footer -->
+        <aside class="mt-4 text-center" aria-hidden="true" role="presentation">
+            <p class="site-note font-title text-xs sm:text-sm text-text-subtle/70 tracking-note select-none" lang="ja">
+                白は、余白の名。
+            </p>
+        </aside>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+
+    
+    <button id="backToTop" type="button" class="back-to-top" data-visible="false" aria-label="Back to Top" hidden>
+        <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
+    
     
 
+    <!-- Scripts -->
+    
+    
+    <script>
+        
+        (window.__shiro = window.__shiro || {}).i18n = window.__shiro.i18n || {};
+        
+        
+        
+        (window.__shiro = window.__shiro || {}).i18n = window.__shiro.i18n || {};
+window.__shiro.i18n["gallery"] = {"view_image":"View image","visit_source":"View Source Link"};
+        (window.__shiro = window.__shiro || {})["lightgallery"] = {"css":"https://cdn.jsdelivr.net/npm/lightgallery@2.9.0/css/lightgallery.min.css","js":"https://cdn.jsdelivr.net/npm/lightgallery@2.9.0/lightgallery.min.js","themeCss":"/css/lightgallery.min.css?v=6d7f41e6","cssIntegrity":"","jsIntegrity":"","script":"/js/lightgallery.min.js?v=28acbf30"};
+        
+        
+        (window.__shiro = window.__shiro || {}).i18n = window.__shiro.i18n || {};
+window.__shiro.i18n["clipboard"] = {"copied":"Copied","copy":"Copy code","failed":"Copy failed"};
+        (window.__shiro = window.__shiro || {})["clipboardScript"] = "/js/clipboard.min.js?v=c4c96ae3";
+        
+    </script>
+    
+    
+    <script defer src="/js/runtime.min.js?v=c4cf3add"></script>
+    
+    <script defer src="/js/lightgallery-bootstrap.min.js?v=2c692569"></script>
+    
+    <script defer src="/js/clipboard-bootstrap.min.js?v=95b68646"></script>
+    
+    <script defer src="/js/progress.min.js?v=5cdbc0b3"></script>
+    
+    <script defer src="/js/back-to-top.min.js?v=2b69ee1f"></script>
+    
+    <script defer src="/js/theme-toggle.min.js?v=96dad201"></script>
+    
+    <script defer src="/js/mobile-menu.min.js?v=f6003010"></script>
+    
+    
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+    
 
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
 </body>
 </html>

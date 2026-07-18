@@ -1,101 +1,444 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+
+
+
+<html lang="en" class="h-full scroll-smooth">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>scratch | rirorinn</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="迷宫探险 Maze Adventure项目目标制作一个迷宫探险游戏： 玩家控制小虫子在迷宫中移动，避开墙壁，收集完成所有水果。 通过本项目复习并学习：  键盘控制角色移动 循环（重复执行） 条件判断 变量 广播消息 游戏状态管理        Part 1：基础迷宫挑战（Maze Explorer）游戏介绍控制小虫子找到水果。 规则：  方向键控制移动 碰到墙壁不能通过 到达水果，游戏胜利  学">
-<meta property="og:type" content="article">
-<meta property="og:title" content="scratch">
-<meta property="og:url" content="https://rirorinn.github.io/2026/07/09/scratch/index.html">
-<meta property="og:site_name" content="rirorinn">
-<meta property="og:description" content="迷宫探险 Maze Adventure项目目标制作一个迷宫探险游戏： 玩家控制小虫子在迷宫中移动，避开墙壁，收集完成所有水果。 通过本项目复习并学习：  键盘控制角色移动 循环（重复执行） 条件判断 变量 广播消息 游戏状态管理        Part 1：基础迷宫挑战（Maze Explorer）游戏介绍控制小虫子找到水果。 规则：  方向键控制移动 碰到墙壁不能通过 到达水果，游戏胜利  学">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-07-09T20:56:01.000Z">
-<meta property="article:modified_time" content="2026-07-14T09:07:33.476Z">
-<meta property="article:author" content="rirorinn">
-<meta property="article:tag" content="scratch">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="rirorinn" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content="Hexo " />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    
 
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
 
-<meta name="generator" content="Hexo 8.1.2"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">rirorinn</a>
-      </h1>
-      
+    
+    
+<script data-cfasync="false">
+;(() => {
+    // Progressive enhancement marker (mobile nav CSS uses html.js before paint).
+    document.documentElement.classList.add('js');
+    const shiro = (window.__shiro = window.__shiro || {});
+    const defaultTheme = "light";
+    shiro.themeDefault = defaultTheme;
+    
+    const states = defaultTheme === 'system' ? ['system', 'light', 'dark'] : ['light', 'dark'];
+    let saved;
+    try { saved = localStorage.getItem('theme'); } catch (_) {}
+    const state = saved && states.includes(saved) ? saved : defaultTheme;
+    const html = document.documentElement;
+    html.setAttribute('data-theme-state', state);
+    const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    // Pagefind dark contract only when search is enabled.
+    const syncPagefindTheme = false;
+    shiro.searchEnabled = syncPagefindTheme;
+    // Single source for theme-toggle.js and system-follow listener.
+    const applyResolvedTheme = (dark) => {
+        html.setAttribute('data-theme', dark ? 'dark' : 'light');
+        if (syncPagefindTheme) {
+            if (dark) html.setAttribute('data-pf-theme', 'dark');
+            else html.removeAttribute('data-pf-theme');
+        }
+        html.style.colorScheme = dark ? 'dark' : 'light';
+    };
+    shiro.applyResolvedTheme = applyResolvedTheme;
+    applyResolvedTheme(state === 'dark' || (state !== 'light' && darkQuery.matches));
+    if (defaultTheme === 'system') {
+        // Follow OS theme while in system mode even if the toggle script is absent.
+        const followSystem = () => {
+            if (html.getAttribute('data-theme-state') !== 'system') return;
+            applyResolvedTheme(darkQuery.matches);
+        };
+        if (darkQuery.addEventListener) darkQuery.addEventListener('change', followSystem);
+        else if (darkQuery.addListener) darkQuery.addListener(followSystem);
+    }
+    // Preloader skip: the session collection must contain this page's font-bundle URL.
+    const fontsReadyToken = "https://fonts.googleapis.com/css2?family=Cardo:wght@400;700\u0026family=Yuji+Syuku\u0026family=Zen+Old+Mincho:wght@400;600\u0026family=Cormorant+Garamond:wght@400;600\u0026family=Fira+Code:wght@400;500\u0026display=swap";
+    shiro.fontsReadyToken = fontsReadyToken;
+    try {
+        const storedFontsReady = sessionStorage.getItem('shiro:fonts-ready');
+        const readyFontTokens = storedFontsReady === fontsReadyToken
+            ? [storedFontsReady]
+            : JSON.parse(storedFontsReady || '[]');
+        if (
+            fontsReadyToken
+            && Array.isArray(readyFontTokens)
+            && readyFontTokens.indexOf(fontsReadyToken) !== -1
+        ) {
+            html.classList.add('shiro-preloader-done');
+        }
+    } catch (_) {}
+})();
+</script>
+
+    
+
+    
+
+
+
+
+
+
+
+    
+
+
+<title>scratch | rirorinn</title>
+
+
+<meta name="description" content="迷宫探险 Maze Adventure 项目目标 制作一个迷宫探险游戏： 玩家控制小虫子在迷宫中移动，避开墙壁，收集完成所有水果。 通过本项目复习并学习： 键盘控制角色移动 循环（重复执行） 条件判断 变量 广播消息 游戏状态管理 Part 1：基础迷宫挑战（Maze Explorer） 游戏介绍 控制小虫子找到水果。 规则： 方向键控制移动 碰到墙壁不能通过 到达水果，游戏胜利 学习内容..." />
+
+
+<meta name="author" content="rirorinn" />
+
+
+<meta name="keywords" content="scratch" />
+
+
+<meta property="og:title" content="scratch | rirorinn" />
+
+<meta property="og:description" content="迷宫探险 Maze Adventure 项目目标 制作一个迷宫探险游戏： 玩家控制小虫子在迷宫中移动，避开墙壁，收集完成所有水果。 通过本项目复习并学习： 键盘控制角色移动 循环（重复执行） 条件判断 变量 广播消息 游戏状态管理 Part 1：基础迷宫挑战（Maze Explorer） 游戏介绍 控制小虫子找到水果。 规则： 方向键控制移动 碰到墙壁不能通过 到达水果，游戏胜利 学习内容..." />
+
+<meta property="og:url" content="https://rirorinn.github.io/2026/07/09/scratch/index.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="rirorinn" />
+
+
+<meta property="og:locale" content="en_US" />
+
+
+
+
+<meta property="article:published_time" content="2026-07-09T20:56:01.000Z" />
+
+
+<meta property="article:modified_time" content="2026-07-14T09:07:33.476Z" />
+
+
+
+<meta property="article:tag" content="scratch" />
+
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="scratch | rirorinn" />
+
+<meta name="twitter:description" content="迷宫探险 Maze Adventure 项目目标 制作一个迷宫探险游戏： 玩家控制小虫子在迷宫中移动，避开墙壁，收集完成所有水果。 通过本项目复习并学习： 键盘控制角色移动 循环（重复执行） 条件判断 变量 广播消息 游戏状态管理 Part 1：基础迷宫挑战（Maze Explorer） 游戏介绍 控制小虫子找到水果。 规则： 方向键控制移动 碰到墙壁不能通过 到达水果，游戏胜利 学习内容..." />
+
+
+
+<link rel="canonical" href="https://rirorinn.github.io/2026/07/09/scratch/index.html" />
+
+
+
+
+
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"scratch","mainEntityOfPage":{"@type":"WebPage","@id":"https://rirorinn.github.io/2026/07/09/scratch/"},"description":"迷宫探险 Maze Adventure 项目目标 制作一个迷宫探险游戏： 玩家控制小虫子在迷宫中移动，避开墙壁，收集完成所有水果。 通过本项目复习并学习： 键盘控制角色移动 循环（重复执行） 条件判断 变量 广播消息 游戏状态管理 Part 1：基础迷宫挑战（Maze Explorer） 游戏介绍 控制小虫子找到水果。 规则： 方向键控制移动 碰到墙壁不能通过 到达水果，游戏胜利 学习内容...","datePublished":"2026-07-09T20:56:01.000Z","dateModified":"2026-07-14T09:07:33.476Z","author":{"@type":"Person","name":"rirorinn"},"publisher":{"@type":"Organization","name":"rirorinn","logo":{"@type":"ImageObject","url":"https://rirorinn.github.io/favicon.svg","width":112,"height":112}},"keywords":"scratch"}]</script>
+
+
+
+<link rel="icon" href="/favicon.svg" />
+
+
+
+
+    
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Yuji+Syuku&family=Zen+Old+Mincho:wght@400;600&family=Cormorant+Garamond:wght@400;600&family=Fira+Code:wght@400;500&display=swap" />
+
+<link rel="stylesheet" href="/css/style.min.css?v=72525358">
+
+<link rel="stylesheet" href="/css/code.min.css?v=cb0da316">
+
+
+<link rel="stylesheet" href="/css/toc.min.css?v=d9987942">
+
+<script defer data-cfasync="false" src="/js/preloader.min.js?v=a3906902"></script>
+
+</head>
+
+
+<body class="h-full fog-bg text-text-body">
+    <!-- Preloader: font CSS load + fonts.ready, or preloader.min.js deadline. -->
+    <div id="shiroPreloader" class="shiro-preloader" aria-hidden="true">
+        <div class="shiro-preloader-ripple" aria-hidden="true">
+            <span class="shiro-preloader-ring"></span>
+            <span class="shiro-preloader-ring"></span>
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://rirorinn.github.io"></form>
-      </div>
+    <a href="#main-content" class="shiro-skip-link">Skip to content</a>
+    
+
+    
+    <div id="progressBar" class="progress-bar" aria-hidden="true"></div>
+    
+    
+    <div id="backToTopSentinel" class="back-to-top-sentinel" aria-hidden="true"></div>
+    
+
+    <div class="min-h-full px-4 pt-14 pb-6 md:pb-5">
+
+        <!-- Paper Card -->
+        <div
+            class="paper mx-auto w-full max-w-4xl rounded-xl px-5 sm:px-8 md:px-12 lg:px-14 pt-10 pb-6 md:pt-12 md:pb-8">
+
+            
+
+
+<header data-pagefind-ignore>
+
+    <div class="flex items-start justify-center">
+        <div class="text-center">
+            <div class="relative inline-block">
+                
+                <p class="site-title">
+                    <a href="/">rirorinn</a>
+                </p>
+                
+                <!-- Seal: Mathematically Centered -->
+                
+            </div>
+            
+            
+            
+            <div class="mt-3 sm:mt-4 flex items-center justify-center gap-2">
+                
+                
+                
+                <button id="themeToggle" type="button" class="focus-elegant header-pill-btn" aria-label="Light" data-label-system="System" data-label-light="Light" data-label-dark="Dark" disabled>
+                    
+<svg data-icon="system" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="2" y="3" width="20" height="14" rx="2" stroke-width="1.5"/>
+    <path d="M8 21h8M12 17v4" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                    
+<svg data-icon="light" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="4" stroke-width="1.5"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                    
+<svg data-icon="dark" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                </button>
+                
+                
+            </div>
+            
+        </div>
     </div>
-  </div>
 </header>
 
-      <div class="outer">
-        <section id="main"><article id="post-scratch" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/07/09/scratch/" class="article-date">
-  <time class="dt-published" datetime="2026-07-09T20:56:01.000Z" itemprop="datePublished">2026-07-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      scratch
-    </h1>
-  
+<!-- Navigation -->
 
-      </header>
+<nav class="mt-8 md:mt-10" aria-label="Menu" data-pagefind-ignore>
+    <!-- Mobile Toggle -->
+    <div class="flex items-center justify-center md:hidden">
+        
+        <button id="menuBtn" type="button"
+            class="focus-elegant inline-flex cursor-pointer items-center gap-2 rounded-full border border-border-strong bg-paper/95 px-4 py-2 text-sm text-text-body shadow-xs"
+            aria-expanded="false" aria-controls="mobileMenu" disabled>
+            <span class="text-base leading-none tracking-widest">Menu</span>
+            
+<svg class="size-4 text-text-chrome transition-transform duration-200" id="menuChevron"
+    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd"
+        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+        clip-rule="evenodd" />
+</svg>
+
+        </button>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:block">
+        <ul class="nav-desktop flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-base text-text-body px-4">
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/">Home</a>
+</li>
+            
+            <li class="text-text-subtle select-none" role="separator" aria-hidden="true">/</li>
+            
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/archives">Archives</a>
+</li>
+            
+            <li class="text-text-subtle select-none" role="separator" aria-hidden="true">/</li>
+            
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/tags">Tags</a>
+</li>
+            
+            <li class="text-text-subtle select-none" role="separator" aria-hidden="true">/</li>
+            
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/about">About</a>
+</li>
+            
+            
+        </ul>
+    </div>
+
+    <!-- Mobile Menu Panel: open without JS; html.js collapses before paint until toggled. -->
+    <div id="mobileMenu" class="menu-panel md:hidden mt-4" data-open="false">
+        <ul
+            class="mx-auto max-w-sm max-h-menu overflow-y-auto rounded-2xl border border-border-strong bg-paper/95 shadow-xs">
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/">Home</a>
+</li>
+            
+            <li class="h-px bg-border-decorative" role="separator" aria-hidden="true"></li>
+            
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/archives">Archives</a>
+</li>
+            
+            <li class="h-px bg-border-decorative" role="separator" aria-hidden="true"></li>
+            
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/tags">Tags</a>
+</li>
+            
+            <li class="h-px bg-border-decorative" role="separator" aria-hidden="true"></li>
+            
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/about">About</a>
+</li>
+            
+            
+        </ul>
+    </div>
     
-    <div class="e-content article-entry" itemprop="articleBody">
-      
+    <script data-cfasync="false">
+    if (document.documentElement.classList.contains('js')) {
+        var menuPanel = document.getElementById('mobileMenu');
+        if (menuPanel) menuPanel.inert = true;
+    }
+    </script>
+</nav>
+
+
+
+            <!-- Main Content -->
+            <main id="main-content" class="section-divider" tabindex="-1">
+                
+
+
+
+
+
+
+
+
+<article class="py-2">
+    <header class="text-center mb-8">
+        
+        <h1 class="page-title mb-4" data-pagefind-body data-pagefind-meta="title">
+            scratch
+        </h1>
+        
+        
+
+
+
+
+
+
+
+
+<div class="mb-4 flex flex-wrap items-center justify-center gap-y-1 text-text-chrome gap-x-4 text-sm">
+    <div class="flex items-center gap-1.5">
+        
+<svg class="size-4 text-text-subtle shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+
+        <a href="/archives/2026/" class="oldstyle-nums link-chrome"><time datetime="2026-07-09">2026/07/09</time></a>
+    </div>
+    
+    
+</div>
+
+        
+    </header>
+
+    
+    
+<!-- Inline TOC (viewports below the `toc` breakpoint, where the fixed sidebar cannot fit beside the paper card).
+     html.js collapses the body before paint; toggle is disabled until toc.js binds. No-JS keeps body open. -->
+<nav id="tocInline" class="toc-inline toc:hidden mb-8" aria-label="Contents" data-pagefind-ignore>
+    <button type="button" class="toc-toggle" aria-expanded="false" aria-controls="tocInlineBody" disabled>
+        <span class="toc-toggle-title">Contents</span>
+        
+<svg class="toc-chevron size-4 text-text-chrome transition-transform duration-200"
+    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd"
+        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+        clip-rule="evenodd" />
+</svg>
+
+    </button>
+    <div class="toc-body" id="tocInlineBody" data-open="false"><ul class="toc-list"><li class="toc-item" data-level="0"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E6%A0%87" data-target="项目目标">项目目标</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-1%EF%BC%9A%E5%9F%BA%E7%A1%80%E8%BF%B7%E5%AE%AB%E6%8C%91%E6%88%98%EF%BC%88Maze-Explorer%EF%BC%89" data-target="Part-1：基础迷宫挑战（Maze-Explorer）">Part 1：基础迷宫挑战（Maze Explorer）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-2%EF%BC%9A%E6%B0%B4%E6%9E%9C%E6%94%B6%E9%9B%86%E5%A4%A7%E5%86%92%E9%99%A9%EF%BC%88Fruit-Maze-Adventure%EF%BC%89" data-target="Part-2：水果收集大冒险（Fruit-Maze-Adventure）">Part 2：水果收集大冒险（Fruit Maze Adventure）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Challenge%EF%BC%9A%E8%BF%B7%E5%AE%AB%E6%8E%A2%E9%99%A9%E5%A4%A7%E6%8C%91%E6%88%98%EF%BC%88Maze-Adventure-Challenge%EF%BC%89" data-target="Challenge：迷宫探险大挑战（Maze-Adventure-Challenge）">Challenge：迷宫探险大挑战（Maze Adventure Challenge）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E6%A0%87-1" data-target="项目目标-1">项目目标</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-1%EF%BC%9A%E9%A6%99%E8%95%89%E6%8E%89%E8%90%BD%E6%8C%91%E6%88%98%EF%BC%88Banana-Catch%EF%BC%89" data-target="Part-1：香蕉掉落挑战（Banana-Catch）">Part 1：香蕉掉落挑战（Banana Catch）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-2%EF%BC%9A%E9%A6%99%E8%95%89%E6%94%B6%E9%9B%86%E5%A4%A7%E6%8C%91%E6%88%98%EF%BC%88Banana-Collector%EF%BC%89" data-target="Part-2：香蕉收集大挑战（Banana-Collector）">Part 2：香蕉收集大挑战（Banana Collector）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D" data-target="项目介绍">项目介绍</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-1%EF%BC%9A%E9%9D%92%E8%9B%99%E8%BF%87%E9%A9%AC%E8%B7%AF%EF%BC%88Cross-the-Road%EF%BC%89" data-target="Part-1：青蛙过马路（Cross-the-Road）">Part 1：青蛙过马路（Cross the Road）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-2%EF%BC%9A%E9%9D%92%E8%9B%99%E6%8C%91%E6%88%98%E8%B5%9B%EF%BC%88Frogger-Challenge%EF%BC%89" data-target="Part-2：青蛙挑战赛（Frogger-Challenge）">Part 2：青蛙挑战赛（Frogger Challenge）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E6%A0%87-2" data-target="项目目标-2">项目目标</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-1%EF%BC%9A%E7%83%9F%E8%8A%B1%E5%8D%87%E7%A9%BA%EF%BC%88Firework-Launch%EF%BC%89" data-target="Part-1：烟花升空（Firework-Launch）">Part 1：烟花升空（Firework Launch）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E4%BB%8B%E7%BB%8D-2" data-target="游戏介绍-2">游戏介绍</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E5%86%85%E5%AE%B9-4" data-target="学习内容-4">学习内容</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-2%EF%BC%9A%E7%83%9F%E8%8A%B1%E7%BB%BD%E6%94%BE%EF%BC%88Firework-Explosion%EF%BC%89" data-target="Part-2：烟花绽放（Firework-Explosion）">Part 2：烟花绽放（Firework Explosion）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D-1" data-target="项目介绍-1">项目介绍</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-1%EF%BC%9A%E7%BF%BB%E7%BF%BB%E5%8D%A1%EF%BC%88Memory-Match%EF%BC%89" data-target="Part-1：翻翻卡（Memory-Match）">Part 1：翻翻卡（Memory Match）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-2%EF%BC%9A%E7%BF%BB%E7%BF%BB%E5%8D%A1%E6%8C%91%E6%88%98%E8%B5%9B%EF%BC%88Memory-Match-Challenge%EF%BC%89" data-target="Part-2：翻翻卡挑战赛（Memory-Match-Challenge）">Part 2：翻翻卡挑战赛（Memory Match Challenge）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D-2" data-target="项目介绍-2">项目介绍</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-1%EF%BC%9A%E8%B4%AA%E5%90%83%E8%9B%87%EF%BC%88Snake%EF%BC%89" data-target="Part-1：贪吃蛇（Snake）">Part 1：贪吃蛇（Snake）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-2%EF%BC%9A%E8%B4%AA%E5%90%83%E8%9B%87%E6%8C%91%E6%88%98%E8%B5%9B%EF%BC%88Snake-Challenge%EF%BC%89" data-target="Part-2：贪吃蛇挑战赛（Snake-Challenge）">Part 2：贪吃蛇挑战赛（Snake Challenge）</a></li></ul></div>
+    
+    <script data-cfasync="false">
+    if (document.documentElement.classList.contains('js')) {
+        var tocBody = document.getElementById('tocInlineBody');
+        if (tocBody) tocBody.inert = true;
+    }
+    </script>
+</nav>
+
+<!-- Sidebar TOC (`toc` breakpoint and up; see --breakpoint-toc in source/css/_core/tokens.css) -->
+<nav id="tocSidebar" class="toc-sidebar hidden toc:block" aria-label="Contents" data-pagefind-ignore>
+    <div class="toc-sidebar-inner">
+        <p class="toc-sidebar-title">Contents</p>
+        <div class="toc-body"><ul class="toc-list"><li class="toc-item" data-level="0"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E6%A0%87" data-target="项目目标">项目目标</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-1%EF%BC%9A%E5%9F%BA%E7%A1%80%E8%BF%B7%E5%AE%AB%E6%8C%91%E6%88%98%EF%BC%88Maze-Explorer%EF%BC%89" data-target="Part-1：基础迷宫挑战（Maze-Explorer）">Part 1：基础迷宫挑战（Maze Explorer）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-2%EF%BC%9A%E6%B0%B4%E6%9E%9C%E6%94%B6%E9%9B%86%E5%A4%A7%E5%86%92%E9%99%A9%EF%BC%88Fruit-Maze-Adventure%EF%BC%89" data-target="Part-2：水果收集大冒险（Fruit-Maze-Adventure）">Part 2：水果收集大冒险（Fruit Maze Adventure）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Challenge%EF%BC%9A%E8%BF%B7%E5%AE%AB%E6%8E%A2%E9%99%A9%E5%A4%A7%E6%8C%91%E6%88%98%EF%BC%88Maze-Adventure-Challenge%EF%BC%89" data-target="Challenge：迷宫探险大挑战（Maze-Adventure-Challenge）">Challenge：迷宫探险大挑战（Maze Adventure Challenge）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E6%A0%87-1" data-target="项目目标-1">项目目标</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-1%EF%BC%9A%E9%A6%99%E8%95%89%E6%8E%89%E8%90%BD%E6%8C%91%E6%88%98%EF%BC%88Banana-Catch%EF%BC%89" data-target="Part-1：香蕉掉落挑战（Banana-Catch）">Part 1：香蕉掉落挑战（Banana Catch）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-2%EF%BC%9A%E9%A6%99%E8%95%89%E6%94%B6%E9%9B%86%E5%A4%A7%E6%8C%91%E6%88%98%EF%BC%88Banana-Collector%EF%BC%89" data-target="Part-2：香蕉收集大挑战（Banana-Collector）">Part 2：香蕉收集大挑战（Banana Collector）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D" data-target="项目介绍">项目介绍</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-1%EF%BC%9A%E9%9D%92%E8%9B%99%E8%BF%87%E9%A9%AC%E8%B7%AF%EF%BC%88Cross-the-Road%EF%BC%89" data-target="Part-1：青蛙过马路（Cross-the-Road）">Part 1：青蛙过马路（Cross the Road）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-2%EF%BC%9A%E9%9D%92%E8%9B%99%E6%8C%91%E6%88%98%E8%B5%9B%EF%BC%88Frogger-Challenge%EF%BC%89" data-target="Part-2：青蛙挑战赛（Frogger-Challenge）">Part 2：青蛙挑战赛（Frogger Challenge）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E6%A0%87-2" data-target="项目目标-2">项目目标</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-1%EF%BC%9A%E7%83%9F%E8%8A%B1%E5%8D%87%E7%A9%BA%EF%BC%88Firework-Launch%EF%BC%89" data-target="Part-1：烟花升空（Firework-Launch）">Part 1：烟花升空（Firework Launch）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E4%BB%8B%E7%BB%8D-2" data-target="游戏介绍-2">游戏介绍</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E5%86%85%E5%AE%B9-4" data-target="学习内容-4">学习内容</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-2%EF%BC%9A%E7%83%9F%E8%8A%B1%E7%BB%BD%E6%94%BE%EF%BC%88Firework-Explosion%EF%BC%89" data-target="Part-2：烟花绽放（Firework-Explosion）">Part 2：烟花绽放（Firework Explosion）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D-1" data-target="项目介绍-1">项目介绍</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-1%EF%BC%9A%E7%BF%BB%E7%BF%BB%E5%8D%A1%EF%BC%88Memory-Match%EF%BC%89" data-target="Part-1：翻翻卡（Memory-Match）">Part 1：翻翻卡（Memory Match）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-2%EF%BC%9A%E7%BF%BB%E7%BF%BB%E5%8D%A1%E6%8C%91%E6%88%98%E8%B5%9B%EF%BC%88Memory-Match-Challenge%EF%BC%89" data-target="Part-2：翻翻卡挑战赛（Memory-Match-Challenge）">Part 2：翻翻卡挑战赛（Memory Match Challenge）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D-2" data-target="项目介绍-2">项目介绍</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-1%EF%BC%9A%E8%B4%AA%E5%90%83%E8%9B%87%EF%BC%88Snake%EF%BC%89" data-target="Part-1：贪吃蛇（Snake）">Part 1：贪吃蛇（Snake）</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Part-2%EF%BC%9A%E8%B4%AA%E5%90%83%E8%9B%87%E6%8C%91%E6%88%98%E8%B5%9B%EF%BC%88Snake-Challenge%EF%BC%89" data-target="Part-2：贪吃蛇挑战赛（Snake-Challenge）">Part 2：贪吃蛇挑战赛（Snake Challenge）</a></li></ul></div>
+    </div>
+</nav>
+
+    
+
+    <div class="prose-shiro" data-pagefind-body>
         <hr>
 <h1 id="迷宫探险-Maze-Adventure"><a href="#迷宫探险-Maze-Adventure" class="headerlink" title="迷宫探险 Maze Adventure"></a>迷宫探险 Maze Adventure</h1><h2 id="项目目标"><a href="#项目目标" class="headerlink" title="项目目标"></a>项目目标</h2><p>制作一个迷宫探险游戏：</p>
 <p>玩家控制小虫子在迷宫中移动，避开墙壁，收集完成所有水果。</p>
@@ -126,11 +469,11 @@
 <h3 id="学习内容"><a href="#学习内容" class="headerlink" title="学习内容"></a>学习内容</h3><ol>
 <li>角色移动：上下左右键</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0°  = 上</span><br><span class="line">90° = 右</span><br><span class="line">180° = 下</span><br><span class="line">-90° = 左</span><br></pre></td></tr></table></figure>
+<figure class="not-prose highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0°  = 上</span><br><span class="line">90° = 右</span><br><span class="line">180° = 下</span><br><span class="line">-90° = 左</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>碰撞检测：条件判断</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果碰到墙</span><br><span class="line">    移动-10步</span><br></pre></td></tr></table></figure>
+<figure class="not-prose highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果碰到墙</span><br><span class="line">    移动-10步</span><br></pre></td></tr></table></figure>
 
 <p>完成第一个版本：虫子 → 水果</p>
 <h2 id="Part-2：水果收集大冒险（Fruit-Maze-Adventure）"><a href="#Part-2：水果收集大冒险（Fruit-Maze-Adventure）" class="headerlink" title="Part 2：水果收集大冒险（Fruit Maze Adventure）"></a>Part 2：水果收集大冒险（Fruit Maze Adventure）</h2><ul>
@@ -433,150 +776,113 @@
 <li>增加撞击&#x2F;吃到食物的音效，提升游戏体验。</li>
 </ul>
 
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="https://rirorinn.github.io/2026/07/09/scratch/" data-id="cuidDUfCPh09WIsyAYGAN3_Es" data-title="scratch" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scratch/" rel="tag">scratch</a></li></ul>
 
-    </footer>
-  </div>
-  
+    <!-- Tags -->
     
-<nav id="article-nav">
-  
-    <a href="/2026/07/14/SQL-Fundamentals/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
+    <div class="mt-8 flex flex-wrap gap-2">
         
-          SQL Fundamentals
         
-      </div>
-    </a>
-  
-  
-    <a href="/1970/01/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
+<a href="/tags/scratch/" class="tag-pill">
+    <svg class="size-3 text-text-subtle mr-2 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z" />
+        <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" />
+    </svg>
+    scratch
+    
+</a>
 
-  
+        
+    </div>
+    
+
+    
+    <!-- Post Navigation: Hexo's page.prev = newer post, page.next = older post -->
+    <nav class="section-divider flex justify-between items-center text-sm md:text-base" aria-label="Post navigation">
+        
+        <a href="/2026/07/14/SQL-Fundamentals/" class="post-nav-link group text-left" title="SQL Fundamentals" aria-label="Newer post: SQL Fundamentals">
+             <span aria-hidden="true">&larr;</span>
+             <span class="post-nav-title">SQL Fundamentals</span>
+        </a>
+        
+
+        
+        <a href="/1970/01/01/hello-world/" class="post-nav-link group text-right" title="Hello World" aria-label="Older post: Hello World">
+            <span class="post-nav-title">Hello World</span>
+            <span aria-hidden="true">&rarr;</span>
+        </a>
+        
+    </nav>
+
+
+    
+    
 </article>
 
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
+            </main>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scratch/" rel="tag">scratch</a></li></ul>
+            <footer class="section-divider site-footer" data-pagefind-ignore>
+    <div class="site-footer-meta text-center text-sm text-text-chrome leading-relaxed">
+        <p>&copy; <span class="oldstyle-nums">2026</span> rirorinn</p>
+        <p class="font-eng text-footnote tracking-wide opacity-90">Elegant theme by <a href="https://github.com/Acris/hexo-theme-shiro" target="_blank" rel="noopener noreferrer" class="link-chrome">Shiro</a> · Made by <a href="https://acris.me" target="_blank" rel="noopener noreferrer" class="link-chrome">Acris</a>
+                        with <span aria-label="love" title="love">❤️</span></p>
     </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/scratch/" style="font-size: 10px;">scratch</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/07/">July 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1970/01/">January 1970</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2026/07/18/db-leetcode-med/">db leetcode med</a>
-          </li>
-        
-          <li>
-            <a href="/2026/07/16/db-leetcode-easy/">db leetcode easy</a>
-          </li>
-        
-          <li>
-            <a href="/2026/07/14/SQL-Fundamentals/">SQL Fundamentals</a>
-          </li>
-        
-          <li>
-            <a href="/2026/07/09/scratch/">scratch</a>
-          </li>
-        
-          <li>
-            <a href="/1970/01/01/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2026 rirorinn<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
 </footer>
 
+        </div>
+
+        <!-- Note Text — decorative aside, not part of main content or footer -->
+        <aside class="mt-4 text-center" aria-hidden="true" role="presentation">
+            <p class="site-note font-title text-xs sm:text-sm text-text-subtle/70 tracking-note select-none" lang="ja">
+                白は、余白の名。
+            </p>
+        </aside>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+
+    
+    <button id="backToTop" type="button" class="back-to-top" data-visible="false" aria-label="Back to Top" hidden>
+        <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
+    
     
 
+    <!-- Scripts -->
+    
+    
+    <script>
+        
+        (window.__shiro = window.__shiro || {}).i18n = window.__shiro.i18n || {};
+        
+        
+        
+        
+        (window.__shiro = window.__shiro || {}).i18n = window.__shiro.i18n || {};
+window.__shiro.i18n["clipboard"] = {"copied":"Copied","copy":"Copy code","failed":"Copy failed"};
+        (window.__shiro = window.__shiro || {})["clipboardScript"] = "/js/clipboard.min.js?v=c4c96ae3";
+        
+    </script>
+    
+    
+    <script defer src="/js/runtime.min.js?v=c4cf3add"></script>
+    
+    <script defer src="/js/clipboard-bootstrap.min.js?v=95b68646"></script>
+    
+    <script defer src="/js/toc.min.js?v=8ec1c86f"></script>
+    
+    <script defer src="/js/progress.min.js?v=5cdbc0b3"></script>
+    
+    <script defer src="/js/back-to-top.min.js?v=2b69ee1f"></script>
+    
+    <script defer src="/js/theme-toggle.min.js?v=96dad201"></script>
+    
+    <script defer src="/js/mobile-menu.min.js?v=f6003010"></script>
+    
+    
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+    
 
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
 </body>
 </html>
