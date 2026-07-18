@@ -1,622 +1,872 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  
+  
+  <title>rirorinn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="rirorinn">
+<meta property="og:url" content="https://rirorinn.github.io/index.html">
+<meta property="og:site_name" content="rirorinn">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="rirorinn">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="rirorinn" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <meta name="author" content="rirorinn">
-
-
-
-
-
-<title>rirorinn</title>
-
-
-
-<link rel="icon" href="/favicon.ico">
-
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
-/>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/css/search.css">
-
-
-
-<script src="/lib/jquery.min.js"></script>
-
-
-<script src="/lib/iconify-icon.min.js"></script>
-
-
-<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-<script>
-  tailwind.config = {
-    darkMode: "class",
-  };
-</script>
-
-<script>
-  (function () {
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-    if (setting === "dark" || (prefersDark && setting !== "light"))
-      document.documentElement.classList.toggle("dark", true);
-    let isDark = document.documentElement.classList.contains("dark");
-  })();
-
-  $(document).ready(function () {
-    // init icon
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = document.documentElement.classList.contains("dark");
-    $("#theme-icon").attr("icon", isDark ? "ic:round-dark-mode" : "ic:round-light-mode");
-
-    function toggleGiscusTheme() {
-      const isDark = document.documentElement.classList.contains("dark");
-      const giscusFrame = document.querySelector("iframe.giscus-frame");
-      if (giscusFrame) {
-        giscusFrame.contentWindow.postMessage(
-          {
-            giscus: {
-              setConfig: {
-                theme: isDark ? "dark" : "light",
-              },
-            },
-          },
-          "https://giscus.app"
-        );
-      }
-    }
-
-
-    // toggle dark mode
-    function toggleDark() {
-      let isDark = document.documentElement.classList.contains("dark");
-      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-      isDark = !isDark;
-      document.documentElement.classList.toggle("dark", isDark);
-      $("#theme-icon").attr("icon", isDark ? "ic:round-dark-mode" : "ic:round-light-mode");
-      if (prefersDark === isDark) {
-        localStorage.setItem("hexo-color-scheme", "auto");
-      } else {
-        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
-      }
-      toggleGiscusTheme();
-    }
-    $("#toggle-dark").click(toggleDark);
-
-    // listen dark mode change
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (e) => {
-        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-        if (setting === "auto") {
-          document.documentElement.classList.toggle("dark", e.matches);
-          $("#theme-icon").attr(
-            "icon",
-            e.matches ? "ic:round-dark-mode" : "ic:round-light-mode"
-          );
-          toggleGiscusTheme();
-        }
-      });
-  });
-</script>
-
-
-
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
 
 <meta name="generator" content="Hexo 8.1.2"></head>
-<body 
-  class="
-    bg-[var(--c-0)]
-    text-[var(--c-80)]
-  ">
-  <!-- The navigation bar -->
-<header class="
-    flex flex-row items-center
-    w-full
-    pr-4
-    z-10
-    border-b-[1px]
-    border-b-[var(--c-border)]
-    dark:bg-[var(--c-0)]
-    dark:border-b-[var(--c-0)]
-    gap-2
-    h-[var(--h-header)]
-    text-[var(--c-80)]
-">
-  <!-- Left part -->
-  <div class="overflow-hidden h-full flex flex-row items-center">
-    <!-- Site Title on the top left -->
-    <a href="/" class="
-            whitespace-nowrap
-            text-2xl
-            text-[var(--c-theme)]
-            hover:text-[var(--c-theme)]
-            pl-4
-            font-black
-            text-gray-900 dark:text-gray-100 
-            opacity-90
-            bg-clip-text text-transparent
-          ">
-      rirorinn
-    </a>
-  </div>
-  <!-- Div for pushing items to both sides -->
-  <div class="flex-1"></div>
-  <!-- Right part -->
-  <div class="flex flex-row items-center z-20 h-full">
-    <!-- Page links -->
-    <div class="hidden sm:flex flex-row h-full">
-      
-        
-        
-          
-          
-      
-      <a href="/index" class="
-                        flex flex-row items-center
-                        gap-1
-                        hover:underline
-                        hover:bg-[var(--c-20)]
-                        hover:text-[var(--c-theme)]
-                        transition-all
-                        px-2
-                        py-1
-                        my-1
-                        rounded-lg
-                        group
-                        whitespace-nowrap
-                    ">
-        
-        
-      </a>
-      
-        
-        
-          
-          
-        
-      <a href="/archives" class="
-                        flex flex-row items-center
-                        gap-1
-                        hover:underline
-                        hover:bg-[var(--c-20)]
-                        hover:text-[var(--c-theme)]
-                        transition-all
-                        px-2
-                        py-1
-                        my-1
-                        rounded-lg
-                        group
-                        whitespace-nowrap
-                    ">
-        
-        <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:inbox-fill" width="22">
-        </iconify-icon>
-        
-        
-        <p>Posts</p>
-        
-      </a>
-      
-        
-        
-          
-          
-        
-      <a href="/about" class="
-                        flex flex-row items-center
-                        gap-1
-                        hover:underline
-                        hover:bg-[var(--c-20)]
-                        hover:text-[var(--c-theme)]
-                        transition-all
-                        px-2
-                        py-1
-                        my-1
-                        rounded-lg
-                        group
-                        whitespace-nowrap
-                    ">
-        
-        <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:user-info-fill" width="22">
-        </iconify-icon>
-        
-        
-        <p>About</p>
-        
-      </a>
-      
-        
-        
-          
-          
-        
-      <a href="/tags/" class="
-                        flex flex-row items-center
-                        gap-1
-                        hover:underline
-                        hover:bg-[var(--c-20)]
-                        hover:text-[var(--c-theme)]
-                        transition-all
-                        px-2
-                        py-1
-                        my-1
-                        rounded-lg
-                        group
-                        whitespace-nowrap
-                    ">
-        
-        <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:tag-fill" width="22">
-        </iconify-icon>
-        
-        
-        <p>Tags</p>
-        
-      </a>
-      
-        
-        
-          
-          
-        
-      <a href="/index" class="
-                        flex flex-row items-center
-                        gap-1
-                        hover:underline
-                        hover:bg-[var(--c-20)]
-                        hover:text-[var(--c-theme)]
-                        transition-all
-                        px-2
-                        py-1
-                        my-1
-                        rounded-lg
-                        group
-                        whitespace-nowrap
-                    ">
-        
-        <iconify-icon class="group-hover:scale-125 transition-transform" icon="mingcute:home-2-fill" width="22">
-        </iconify-icon>
-        
-        
-      </a>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">rirorinn</a>
+      </h1>
       
     </div>
-    <!-- Icons on the right -->
-    <div class="flex flex-row items-center justify-center">
-
-      <!-- TODO: Add search icon here -->
-
-      <!-- Dark/light toggle icon -->
-      <a class="flex group p-1" title="toggle theme" id="toggle-dark">
-        <iconify-icon class="transition-transform
-                    group-hover:rotate-[45deg]
-                    group-hover:scale-125
-                    group-hover:text-[var(--c-theme)]" width="24" id="theme-icon">
-        </iconify-icon>
-      </a>
-      <!-- Icon for dropout menu on small screens -->
-      <div class="flex flex-row items-center justify-center p-1 sm:hidden">
-        <a class="w-6 h-6" aria-hidden="true" id="open-menu">
-          <iconify-icon width="24" icon="mingcute:menu-fill" class="transition-transform hover:scale-125 hover:rotate-[5deg]">
-          </iconify-icon>
-        </a>
-        <a class="w-6 h-6 hidden" aria-hidden="true" id="close-menu">
-          <iconify-icon width="24" icon="mingcute:close-circle-fill" class="transition-transform hover:scale-125 hover:rotate-[80deg]">
-          </iconify-icon>
-        </a>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://rirorinn.github.io"></form>
       </div>
     </div>
   </div>
 </header>
 
-<!-- Dropdown menu on small screens -->
-<div id="menu-panel" class="
-        h-0
-        overflow-hidden
-        sm:hidden
-        w-full
-        z-10
-        rounded
-    ">
-  <div id="menu-content" class="
-        flex
-        flex-col
-        font-bold
-        text-xl
-        border-b-[1px]
-        relative
-        z-20
-        border-[var(--c-sep)]
-        px-2
-        py-2
-        -translate-y-full
-        transition-transform
-        duration-200
-        ">
-    
-    
-    
-    <a href="/index" class="flex flex-row items-center
-              h-12
-              hover:underline
-              px-3
-              py-1
-              rounded-lg
-            ">
-      <p>
-        Home
-      </p>
-    </a>
-    
-    
-    
-    
-    <a href="/archives" class="
-                flex flex-row items-center
-                gap-2
-                h-12
-                hover:underline
-                hover:bg-[var(--c-20)]
-                px-3
-                py-1
-                rounded-lg
-            ">
-      <iconify-icon icon="mingcute:inbox-fill" width="22">
-      </iconify-icon>
-      <p>
-        Posts
-      </p>
-    </a>
-    
-    
-    
-    
-    <a href="/about" class="
-                flex flex-row items-center
-                gap-2
-                h-12
-                hover:underline
-                hover:bg-[var(--c-20)]
-                px-3
-                py-1
-                rounded-lg
-            ">
-      <iconify-icon icon="mingcute:user-info-fill" width="22">
-      </iconify-icon>
-      <p>
-        About
-      </p>
-    </a>
-    
-    
-    
-    
-    <a href="/tags/" class="
-                flex flex-row items-center
-                gap-2
-                h-12
-                hover:underline
-                hover:bg-[var(--c-20)]
-                px-3
-                py-1
-                rounded-lg
-            ">
-      <iconify-icon icon="mingcute:tag-fill" width="22">
-      </iconify-icon>
-      <p>
-        Tags
-      </p>
-    </a>
-    
-    
-    
-    
-    <a href="/index" class="
-                flex flex-row items-center
-                gap-2
-                h-12
-                hover:underline
-                hover:bg-[var(--c-20)]
-                px-3
-                py-1
-                rounded-lg
-            ">
-      <iconify-icon icon="mingcute:home-2-fill" width="22">
-      </iconify-icon>
-      <p>
-        
-      </p>
-    </a>
-    
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-db-leetcode-med" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/07/18/db-leetcode-med/" class="article-date">
+  <time class="dt-published" datetime="2026-07-18T15:50:59.000Z" itemprop="datePublished">2026-07-18</time>
+</a>
     
   </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/07/18/db-leetcode-med/">db leetcode med</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://rirorinn.github.io/2026/07/18/db-leetcode-med/" data-id="cuid6-rlxf7bNKte4b20revNc" data-title="db leetcode med" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-db-leetcode-easy" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/07/16/db-leetcode-easy/" class="article-date">
+  <time class="dt-published" datetime="2026-07-16T11:31:00.000Z" itemprop="datePublished">2026-07-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/07/16/db-leetcode-easy/">db leetcode easy</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>date相关<br><img src="/./db-leetcode-easy/Rising%20Temperature.png" alt="197. Rising Temperature"></li>
+</ol>
+<ul>
+<li>Run 正确，但 Submit 错误<ul>
+<li>使用的数据不同</li>
+</ul>
+</li>
+<li><strong>DATE 不能直接进行 +1 &#x2F; -1 运算</strong>  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ON</span> w2.recordDate <span class="operator">=</span> (w1.recordDate <span class="operator">-</span> <span class="number">1</span>)</span><br><span class="line"><span class="comment">-- eg: 2015-02-01 = 2015-02-00</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>DATE_ADD()</code></li>
+<li><code>DATE_SUB()</code></li>
+<li><code>DATEDIFF()</code></li>
+<li><code>TIMESTAMPDIFF()</code></li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>TODO： Average Selling Price<br><img src="/./db-leetcode-easy/Average%20Selling%20Price.png" alt="1251.Average Selling Price"></li>
+</ol>
+<ul>
+<li>Wrong aggregation <ul>
+<li><code>SUM()</code> is over-counted</li>
+<li><code>group by</code> 为什么没有去重？<ul>
+<li>为什么加上<code>AND u.purchase_date BETWEEN p.start_date AND p.end_date</code> 就出来正确结果了？</li>
+<li>题干本身并没有明说data range</li>
+<li>(product_id, start_date, end_date) 表示该商品在这一时间段内的价格，即表明同一个 product 的价格区间不会重叠，所以可以通过该条件进行筛选。</li>
+<li>含义到底是什么？</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li><code>cross join</code><br><img src="/./db-leetcode-easy/1280.png" alt="1280.Students and Examinations"></li>
+</ol>
+<ul>
+<li>count结果为6，同上述问题一样，left join会重复<ul>
+<li><code>ON ex.student_id = st.student_id</code> 只限定了id，subject_name没有：</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Alice Math        -&gt; Math</span><br><span class="line">Alice Math        -&gt; Math</span><br><span class="line">Alice Math        -&gt; Physics</span><br><span class="line"></span><br><span class="line">Alice Physics     -&gt; Math</span><br><span class="line">Alice Physics     -&gt; Math</span><br><span class="line">Alice Physics     -&gt; Physics</span><br><span class="line"></span><br><span class="line">Alice Programming -&gt; Math</span><br><span class="line">Alice Programming -&gt; Math</span><br><span class="line">Alice Programming -&gt; Physics</span><br></pre></td></tr></table></figure></li>
+<li>MySQL 没有<code>full join</code> 所以实现：  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1965. Employees With Missing Information</span></span><br><span class="line"><span class="keyword">SELECT</span> e.employee_id</span><br><span class="line"><span class="keyword">FROM</span> Employees e</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Salaries s</span><br><span class="line"><span class="keyword">ON</span> e.employee_id <span class="operator">=</span> s.employee_id</span><br><span class="line"><span class="keyword">WHERE</span> s.employee_id <span class="keyword">IS</span> <span class="keyword">NULL</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> s.employee_id</span><br><span class="line"><span class="keyword">FROM</span> Salaries s</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Employees e</span><br><span class="line"><span class="keyword">ON</span> s.employee_id <span class="operator">=</span> e.employee_id</span><br><span class="line"><span class="keyword">WHERE</span> e.employee_id <span class="keyword">IS</span> <span class="keyword">NULL</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> employee_id;</span><br></pre></td></tr></table></figure></li>
+<li><code>left join</code> 的匹配并不是<strong>严格</strong>按照on的条件<br><img src="/./db-leetcode-easy/left%20join_issue.png" alt="left%20join_issue"></li>
+</ul>
+<p>图片中的output第一行，s.employee_id为null，但是与e.employee_id&#x3D;2一行<br>null 那一行不是匹配出来的，而是 left join 补出来的。<br>    left join 的规则是：左表每一行必须保留。 e.employee_id&#x3D;2没有找到任何匹配项，所以右表所有列补 NULL</p>
+<ol start="4">
+<li>月份：<ul>
+<li>限定年月</li>
+</ul>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WHERE</span> o.order_date <span class="keyword">like</span> <span class="string">&#x27;2020-02-%&#x27;</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">YEAR</span>(o.order_date)<span class="operator">=</span><span class="string">&#x27;2020&#x27;</span> <span class="keyword">AND</span> <span class="keyword">MONTH</span>(o.order_date)<span class="operator">=</span><span class="string">&#x27;02&#x27;</span></span><br><span class="line"><span class="comment">-- where o.order_date between &quot;2020-02-01&quot; and &quot;2020-02-29&quot;  </span></span><br></pre></td></tr></table></figure></li>
+<li><code>like</code> &#x2F; <code>regexp</code> &#x2F; <code>regexp_like</code> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;^[A-Za-z0-9_]+@[A-Za-z]+\\.com$&#x27;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 3465. Find Products with Valid Serial Numbers</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> products</span><br><span class="line"><span class="keyword">where</span> regexp_like(</span><br><span class="line">    description,</span><br><span class="line">    <span class="string">&#x27;(^| )SN[0-9]&#123;4&#125;-[0-9]&#123;4&#125;( |$)&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;c&#x27;</span></span><br><span class="line">) <span class="keyword">order</span> <span class="keyword">by</span> product_id</span><br></pre></td></tr></table></figure></li>
+<li><code>LENGTH(string)</code></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://rirorinn.github.io/2026/07/16/db-leetcode-easy/" data-id="cuid0znZBhc4RnDzQQ8_oJbcu" data-title="db leetcode easy" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-SQL-Fundamentals" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/07/14/SQL-Fundamentals/" class="article-date">
+  <time class="dt-published" datetime="2026-07-14T18:37:51.000Z" itemprop="datePublished">2026-07-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/07/14/SQL-Fundamentals/">SQL Fundamentals</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="table"><a href="#table" class="headerlink" title="table"></a>table</h1><ol>
+<li><p>select * from table_name;</p>
+<ul>
+<li>select column_name &#x2F; top &#x2F; percent &#x2F; distinct … as column_alias<ul>
+<li>aggregate functions: count() &#x2F; sum() &#x2F; avg() &#x2F; min() &#x2F; max()</li>
+</ul>
+</li>
+<li>order by column_name asc&#x2F;desc;</li>
+<li>group by column_name; <ul>
+<li><strong>having</strong> aggregate_function(column_name) condition;</li>
+</ul>
+</li>
+<li>limit n;</li>
+<li>where column_name &#x3D; val;<ul>
+<li>and &#x2F; or &#x2F; not</li>
+<li>is null &#x2F; is not null</li>
+<li>in &#x2F; not in ()</li>
+<li>between val1 and val2</li>
+<li>like ‘%val%’</li>
+<li>join<ul>
+<li>left join &#x2F; right join &#x2F; inner join &#x2F; full join on table1.column_name &#x3D; table2.column_name<ul>
+<li>Returns all rows from the left&#x2F;right table, and only the matched rows from the right&#x2F;left table</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>union &#x2F; union all<ul>
+<li>combine the result set of two or more select statements</li>
+<li><em>union</em> removes duplicate rows, while <em>union all</em> includes duplicates</li>
+<li>must have an <strong>equal number</strong> of expressions in their target lists.</li>
+</ul>
+</li>
+<li>exists(subquery)</li>
+<li>column_name &#x3D; <em>any</em> &#x2F; <em>all</em>(subquery)</li>
+</ul>
+</li>
+<li>case  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ProductName, Price,</span><br><span class="line"><span class="keyword">CASE</span></span><br><span class="line">    <span class="keyword">WHEN</span> Price <span class="operator">&lt;</span> <span class="number">20</span> <span class="keyword">THEN</span> <span class="string">&#x27;Low Cost&#x27;</span></span><br><span class="line">    <span class="keyword">WHEN</span> Price <span class="keyword">BETWEEN</span> <span class="number">20</span> <span class="keyword">AND</span> <span class="number">50</span> <span class="keyword">THEN</span> <span class="string">&#x27;Medium Cost&#x27;</span></span><br><span class="line">    <span class="keyword">ELSE</span> <span class="string">&#x27;High Cost&#x27;</span></span><br><span class="line"><span class="keyword">END</span> <span class="keyword">AS</span> PriceCategory</span><br><span class="line"><span class="keyword">FROM</span> Products;</span><br></pre></td></tr></table></figure></li>
+<li>SELECT * INTO newtable [IN external_db] from …<ul>
+<li>to create a new table and fill it with data from an existing table.</li>
+<li>useful for creating backups or for creating a temporary table for analysis.</li>
+</ul>
+</li>
+<li>INSERT INTO target_table SELECT * FROM source_table WHERE condition;<ul>
+<li>to copy data from an existing table and insert it into another existing table.</li>
+<li>the data types in source and target tables match.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>insert into table_name (col1, col2, …) values (val1, val2, …);</p>
+</li>
+<li><p>update table_name set col1 &#x3D; val1, col2 &#x3D; val2, …</p>
+</li>
+<li><p>delete from table_name</p>
+<ul>
+<li>where col1 &#x3D; val1</li>
+</ul>
+</li>
+<li><p>create table table_name(col1 datatype PRIMARY KEY, col2 datatype NOT NULL, …)</p>
+<ul>
+<li>datatype: int, char, var(255), </li>
+<li>constraints: not null, unique, primary key, foreign key, check(condition), default  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> Persons (</span><br><span class="line">    ID <span class="type">int</span> <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    username <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    Age <span class="type">int</span> <span class="keyword">CHECK</span> (Age <span class="operator">&gt;=</span> <span class="number">18</span>),</span><br><span class="line">    City <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="string">&#x27;Sandnes&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
+<li>AUTO_INCREMENT </li>
+<li>CREATE [UNIQUE] INDEX index_name on table_name(col1, col2, …)</li>
+</ul>
+</li>
+<li><p>drop table table_name</p>
+</li>
+<li><p>alert table table_name </p>
+<ul>
+<li>add col_name datatype</li>
+<li>DROP COLUMN column_name;</li>
+<li>RENAME COLUMN old_name to new_name;</li>
+<li>RENAME TO new_table_name;</li>
+<li>ALTER COLUMN column_name new_datatype constraint;</li>
+<li>ADD CONSTRAINT constraint_name constraint_definition;</li>
+</ul>
+</li>
+<li><p>views</p>
+</li>
+</ol>
+<h1 id="db"><a href="#db" class="headerlink" title="db"></a>db</h1><ol>
+<li>create database db_name;</li>
+<li>drop database db_name;</li>
+<li>use db_name;</li>
+</ol>
+<h1 id="Stored-Procedure-Syntax-SQL-Server"><a href="#Stored-Procedure-Syntax-SQL-Server" class="headerlink" title="Stored Procedure Syntax(SQL Server)"></a>Stored Procedure Syntax(SQL Server)</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> procedure_name</span><br><span class="line">  <span class="variable">@param1</span> datatype,</span><br><span class="line">  <span class="variable">@param2</span> datatype</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="comment">-- SQL_statements to be executed</span></span><br><span class="line">  <span class="keyword">SELECT</span> column1, column2</span><br><span class="line">  <span class="keyword">FROM</span> table_name</span><br><span class="line">  <span class="keyword">WHERE</span> columnN <span class="operator">=</span> <span class="variable">@paramN</span>;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">EXEC</span> procedure_name <span class="variable">@param1</span> <span class="operator">=</span> <span class="string">&#x27;value1&#x27;</span>, <span class="variable">@param2</span> <span class="operator">=</span> <span class="string">&#x27;value2&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span> procedure_name;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- example:</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> GetCustomersByCity</span><br><span class="line">  <span class="variable">@City</span> nvarchar(<span class="number">50</span>),</span><br><span class="line">  <span class="variable">@PostalCode</span> nvarchar(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Customers</span><br><span class="line">  <span class="keyword">WHERE</span> City <span class="operator">=</span> <span class="variable">@City</span> <span class="keyword">AND</span> PostalCode <span class="operator">=</span> <span class="variable">@PostalCode</span>;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">EXEC</span> GetCustomersByCity <span class="variable">@City</span> <span class="operator">=</span> <span class="string">&#x27;London&#x27;</span>, <span class="variable">@PostalCode</span> <span class="operator">=</span> <span class="string">&#x27;WA1 1DP&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://rirorinn.github.io/2026/07/14/SQL-Fundamentals/" data-id="cuidl5CdgzEuPBqCLW1Y3XsRY" data-title="SQL Fundamentals" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-scratch" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/07/09/scratch/" class="article-date">
+  <time class="dt-published" datetime="2026-07-09T20:56:01.000Z" itemprop="datePublished">2026-07-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/07/09/scratch/">scratch</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <hr>
+<h1 id="迷宫探险-Maze-Adventure"><a href="#迷宫探险-Maze-Adventure" class="headerlink" title="迷宫探险 Maze Adventure"></a>迷宫探险 Maze Adventure</h1><h2 id="项目目标"><a href="#项目目标" class="headerlink" title="项目目标"></a>项目目标</h2><p>制作一个迷宫探险游戏：</p>
+<p>玩家控制小虫子在迷宫中移动，避开墙壁，收集完成所有水果。</p>
+<p>通过本项目复习并学习：</p>
+<ul>
+<li>键盘控制角色移动</li>
+<li>循环（重复执行）</li>
+<li>条件判断</li>
+<li>变量</li>
+<li>广播消息</li>
+<li>游戏状态管理</li>
+</ul>
+<div style="position:relative;padding-bottom:75%;height:0;overflow:hidden;">
+<iframe
+  src="/scratch/MazeStart.html"
+  style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+</iframe>
 </div>
 
 
-  <main>
-    <div class="flex flex-col gap-0">
-  <div class="index-info-container pt-6 text-[var(--c-70)]">
-    <!-- Home page info, short text about me -->
-    <div class="flex flex-col items-center justify-center">
-      <div class="flex flex-col items-center justify-center">
+<h2 id="Part-1：基础迷宫挑战（Maze-Explorer）"><a href="#Part-1：基础迷宫挑战（Maze-Explorer）" class="headerlink" title="Part 1：基础迷宫挑战（Maze Explorer）"></a>Part 1：基础迷宫挑战（Maze Explorer）</h2><h3 id="游戏介绍"><a href="#游戏介绍" class="headerlink" title="游戏介绍"></a>游戏介绍</h3><p>控制小虫子找到水果。</p>
+<p>规则：</p>
+<ul>
+<li>方向键控制移动</li>
+<li>碰到墙壁不能通过</li>
+<li>到达水果，游戏胜利</li>
+</ul>
+<h3 id="学习内容"><a href="#学习内容" class="headerlink" title="学习内容"></a>学习内容</h3><ol>
+<li>角色移动：上下左右键</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0°  = 上</span><br><span class="line">90° = 右</span><br><span class="line">180° = 下</span><br><span class="line">-90° = 左</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>碰撞检测：条件判断</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果碰到墙</span><br><span class="line">    移动-10步</span><br></pre></td></tr></table></figure>
 
-        
+<p>完成第一个版本：虫子 → 水果</p>
+<h2 id="Part-2：水果收集大冒险（Fruit-Maze-Adventure）"><a href="#Part-2：水果收集大冒险（Fruit-Maze-Adventure）" class="headerlink" title="Part 2：水果收集大冒险（Fruit Maze Adventure）"></a>Part 2：水果收集大冒险（Fruit Maze Adventure）</h2><ul>
+<li>增加多个水果，玩家需要收集所有水果才能完成游戏。(变量 &#x3D; 游戏状态)</li>
+<li>增加生命值，玩家碰到墙壁会扣除生命值，生命值为0时游戏失败。(变量保存游戏信息)</li>
+<li>增加计时器。</li>
+</ul>
+<h3 id="学习内容-1"><a href="#学习内容-1" class="headerlink" title="学习内容"></a>学习内容</h3><ol>
+<li>变量：水果、生命值、计时器</li>
+<li>广播消息：游戏开始、游戏结束<br> 原因： 游戏结束时：多个角色需要同时响应。</li>
+</ol>
+<h2 id="Challenge：迷宫探险大挑战（Maze-Adventure-Challenge）"><a href="#Challenge：迷宫探险大挑战（Maze-Adventure-Challenge）" class="headerlink" title="Challenge：迷宫探险大挑战（Maze Adventure Challenge）"></a>Challenge：迷宫探险大挑战（Maze Adventure Challenge）</h2><p><a target="_blank" rel="noopener" href="https://www.mazegenerator.net/">Maze Generator</a></p>
+<div style="position:relative;padding-bottom:75%;height:0;overflow:hidden;">
+<iframe
+  src="/scratch/Maze Challenge.html"
+  style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+</iframe>
+</div>
 
-        <!-- Main info container -->
-        <div class="flex flex-col items-center gap-4 pt-4">
-          <!-- Site title -->
-          <h1 class="
-            site-title
-            text-center
-            text-5xl
-            py-2
-            text-gray-900 dark:text-gray-100 
-            opacity-90
-            bg-clip-text text-transparent
-            font-black  
-            ">
-            rirorinn
-          </h1>
-          <!-- Sub-title -->
-          
-          <!-- Location and CV -->
-          <div class="flex flex-wrap items-center justify-center gap-4 font-bold text-lg">
-            <div class="flex flex-row items-center gap-1">
-              <iconify-icon width="24" icon="mingcute:building-1-fill"></iconify-icon>
-              <p>Italy</p>
-            </div>
-            <!-- <div class="flex flex-row items-center gap-1 group">
-              <iconify-icon class="transition-transform
-            group-hover:scale-125" width="24" icon="mingcute:idcard-fill"></iconify-icon>
-              <a href="/pdf/cv.pdf" class="group-hover:underline">
-                CV ()
-              </a>
-            </div> -->
-            <!-- Social links -->
-            <div class="flex flex-row items-center">
-              
+
+<ul>
+<li>增加迷宫难度，迷宫中有多个分支和死路，玩家需要找到正确的路径才能到达水果处。</li>
+<li>水果隐藏，玩家需要找到隐藏的水果才能完成游戏。<br>  开始时，显示两秒，后隐藏。按空格可显示。<ul>
+<li>不可以真的隐藏，否则无法实现触碰功能<ul>
+<li>虚度：100<ul>
+<li>虚度： 100%透明</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>规定时间内完成游戏，超时则游戏失败。</li>
+<li>增加怪物，玩家需要避开怪物，碰到怪物会扣除生命值。<ul>
+<li>固定巡逻怪物</li>
+<li>怪物随机移动<ul>
+<li>初始位置随机<ul>
+<li>限定在迷宫中空白区域</li>
+<li>TODO: 开始后会出现乱飞的情况</li>
+</ul>
+</li>
+<li>TODO: 如何随机移动？</li>
+</ul>
+</li>
+<li>TODO: 怪物追踪玩家<ul>
+<li>使用？算法，计算从怪物到玩家的最短路径，然后沿着路径移动。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="猴子接香蕉（Monkey-Catch-Banana）"><a href="#猴子接香蕉（Monkey-Catch-Banana）" class="headerlink" title="猴子接香蕉（Monkey Catch Banana）"></a>猴子接香蕉（Monkey Catch Banana）</h1><h2 id="项目目标-1"><a href="#项目目标-1" class="headerlink" title="项目目标"></a>项目目标</h2><p>控制猴子接住从天空不断掉落的香蕉。</p>
+<p>通过本项目复习并学习：</p>
+<ul>
+<li>鼠标控制角色移动</li>
+<li>循环（重复执行）</li>
+<li><strong>克隆</strong></li>
+<li>随机数</li>
+</ul>
+<div style="position:relative;padding-bottom:75%;height:0;overflow:hidden;">
+<iframe
+  src="/scratch/Monkey Catch Banana.html"
+  style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+</iframe>
+</div>
+
+
+<h2 id="Part-1：香蕉掉落挑战（Banana-Catch）"><a href="#Part-1：香蕉掉落挑战（Banana-Catch）" class="headerlink" title="Part 1：香蕉掉落挑战（Banana Catch）"></a>Part 1：香蕉掉落挑战（Banana Catch）</h2><p>游戏介绍</p>
+<p>利用克隆功能，每隔一段时间建立香蕉分身，让香蕉从舞台顶部随机位置掉落。</p>
+<h3 id="游戏介绍："><a href="#游戏介绍：" class="headerlink" title="游戏介绍："></a>游戏介绍：</h3><ul>
+<li>使用鼠标控制猴子左右移动</li>
+<li>接住不断掉落的香蕉</li>
+<li>香蕉掉到底部自动消失</li>
+<li>接住香蕉播放吃香蕉音效</li>
+</ul>
+<h3 id="学习内容-2"><a href="#学习内容-2" class="headerlink" title="学习内容"></a>学习内容</h3><ul>
+<li>使用克隆建立多个香蕉<ul>
+<li>“克隆自己” &#x3D; 复制一个分身</li>
+<li>“当作为克隆体启动时” &#x3D; 分身出现后做什么</li>
+<li>克隆体和本体独立运行， 每个克隆体拥有独立的位置和运动状态<ul>
+<li>opt: “删除此克隆体” &#x3D; 用完后消失<ul>
+<li>符合“掉落物不断产生”的自然逻辑。</li>
+<li>每一个游戏对象都有生命周期。create → update → destroy</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>香蕉随机位置生成</li>
+</ul>
+<p>完成第一个版本：猴子能够接住不断掉落的香蕉。</p>
+<h2 id="Part-2：香蕉收集大挑战（Banana-Collector）"><a href="#Part-2：香蕉收集大挑战（Banana-Collector）" class="headerlink" title="Part 2：香蕉收集大挑战（Banana Collector）"></a>Part 2：香蕉收集大挑战（Banana Collector）</h2><ul>
+<li>增加计分功能，接住香蕉得分。</li>
+<li>增加计时器，规定时间内接住尽可能多的香蕉。<ul>
+<li>在该时间内，接住x个香蕉，游戏胜利。</li>
+</ul>
+</li>
+<li>键盘控制猴子移动。</li>
+<li>增加虫子，碰到虫子扣分。</li>
+<li>香蕉效果优化<ul>
+<li>大小随机变化。大香蕉速度快，小香蕉速度慢。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="青蛙过马路（Frogger）"><a href="#青蛙过马路（Frogger）" class="headerlink" title="青蛙过马路（Frogger）"></a>青蛙过马路（Frogger）</h1><h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>控制青蛙穿越繁忙的马路，避开来往的汽车，到达终点收集苹果。</p>
+<p>通过本项目复习并学习：</p>
+<ul>
+<li>键盘控制角色移动</li>
+<li>循环（重复执行）</li>
+<li>碰撞检测</li>
+<li><strong>广播消息</strong></li>
+<li>克隆</li>
+</ul>
+<div style="position:relative;padding-bottom:75%;height:0;overflow:hidden;">
+<iframe
+  src="/scratch/Frogger.html"
+  style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+</iframe>
+</div>
+
+
+<h2 id="Part-1：青蛙过马路（Cross-the-Road）"><a href="#Part-1：青蛙过马路（Cross-the-Road）" class="headerlink" title="Part 1：青蛙过马路（Cross the Road）"></a>Part 1：青蛙过马路（Cross the Road）</h2><h3 id="游戏介绍-1"><a href="#游戏介绍-1" class="headerlink" title="游戏介绍"></a>游戏介绍</h3><p>控制青蛙穿越马路，避开来往的汽车，到达终点收集苹果。</p>
+<p>玩家需要：</p>
+<ul>
+<li>使用方向键控制青蛙移动</li>
+<li>汽车持续在道路上行驶</li>
+<li>被汽车撞到后返回起点</li>
+<li>收集苹果后重新开始下一轮</li>
+</ul>
+<h3 id="学习内容-3"><a href="#学习内容-3" class="headerlink" title="学习内容"></a>学习内容</h3><ol>
+<li>使用方向键控制角色移动</li>
+<li>使用克隆建立多辆汽车</li>
+<li>汽车自动移动</li>
+<li>碰撞检测（汽车与青蛙）</li>
+<li>广播<ul>
+<li>广播角色被撞击</li>
+<li>广播收集苹果</li>
+<li>广播游戏开始、游戏结束</li>
+</ul>
+</li>
+</ol>
+<p>完成第一个版本：玩家能够控制青蛙成功穿越马路并收集苹果。</p>
+<hr>
+<h2 id="Part-2：青蛙挑战赛（Frogger-Challenge）"><a href="#Part-2：青蛙挑战赛（Frogger-Challenge）" class="headerlink" title="Part 2：青蛙挑战赛（Frogger Challenge）"></a>Part 2：青蛙挑战赛（Frogger Challenge）</h2><ul>
+<li>增加计分板，每收集一个苹果获得一分。</li>
+<li>增加倒计时，在规定时间内获得目标分数即可获胜，否则游戏失败。</li>
+<li>增加汽车随机颜色或造型，使游戏画面更加丰富。</li>
+<li>增加碰撞特效与音效，提升游戏体验。</li>
+</ul>
+<hr>
+<h1 id="放烟花"><a href="#放烟花" class="headerlink" title="放烟花"></a>放烟花</h1><h2 id="项目目标-2"><a href="#项目目标-2" class="headerlink" title="项目目标"></a>项目目标</h2><p>制作一个烟花表演小游戏，让烟花从地面随机位置升空，并在空中绽放出绚丽的烟花效果。</p>
+<p>通过本项目复习并学习：</p>
+<ul>
+<li>自定义积木（函数）</li>
+<li>画笔</li>
+<li>随机数</li>
+<li>变量</li>
+</ul>
+<div style="position:relative;padding-bottom:75%;height:0;overflow:hidden;">
+<iframe
+  src="/scratch/Firework V2.html"
+  style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+</iframe>
+</div>
+
+<h2 id="Part-1：烟花升空（Firework-Launch）"><a href="#Part-1：烟花升空（Firework-Launch）" class="headerlink" title="Part 1：烟花升空（Firework Launch）"></a>Part 1：烟花升空（Firework Launch）</h2><h2 id="游戏介绍-2"><a href="#游戏介绍-2" class="headerlink" title="游戏介绍"></a>游戏介绍</h2><p>利用函数与画笔功能，让烟花从舞台下方向天空发射，并绘制出烟花飞行轨迹。</p>
+<h2 id="学习内容-4"><a href="#学习内容-4" class="headerlink" title="学习内容"></a>学习内容</h2><ol>
+<li>光迹效果&#x2F;光影轨迹效果&#x2F;拖尾效果<ul>
+<li>让移动中的东西“不只是移动过去”，而是在经过的位置留下“残影”</li>
+<li>让轨迹逐渐消失，看起来像发光。光束，手电筒</li>
+<li>烟花上升的过程住，主体最亮 后面轨迹逐渐变淡<ul>
+<li>亮点 -&gt; 淡影 -&gt; 消失</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>图章<br> 像拿一个透明印章，在舞台上盖下角色当前的样子。盖下之后，印出来的图案不会随着角色移动，而是留在舞台上。<ul>
+<li>vs 克隆：<ul>
+<li>克隆：克隆体是一个独立的角色，拥有自己的位置和运动状态。克隆体可以移动、旋转、改变造型等。</li>
+<li>图章：图章是一个静态的图像，盖下之后不会移动，也不会改变造型。图章只是一个印记，无法与其他角色互动。主要用来做背景效果</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>自定义积木（函数）<ul>
+<li>给一组动作取一个名字<ul>
+<li>如果一个动作会经常使用，我们可以把它打包成一个新的积木，以后只需要点击这个积木，就可以执行这一整套动作。</li>
+<li>让程序更简洁，易于理解和维护。</li>
+</ul>
+</li>
+<li><strong>参数</strong><ul>
+<li>给自定义积木添加参数，让同一个积木可以根据不同的输入执行不同的动作。</li>
+<li>例如：发射烟花的高度、颜色、速度等都可以作为参数传入自定义积木，使得烟花效果更加丰富多样。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Part-2：烟花绽放（Firework-Explosion）"><a href="#Part-2：烟花绽放（Firework-Explosion）" class="headerlink" title="Part 2：烟花绽放（Firework Explosion）"></a>Part 2：烟花绽放（Firework Explosion）</h2><ul>
+<li>烟花飞到最高点后产生爆炸效果。</li>
+<li>爆炸粒子向四周飞散，并逐渐消失。</li>
+<li>每次爆炸颜色随机，形成不同的烟花效果。</li>
+<li>多个烟花能够连续发射，形成完整的烟花表演。</li>
+</ul>
+<hr>
+<h1 id="翻翻卡（Memory-Match）"><a href="#翻翻卡（Memory-Match）" class="headerlink" title="翻翻卡（Memory Match）"></a>翻翻卡（Memory Match）</h1><h2 id="项目介绍-1"><a href="#项目介绍-1" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>点击卡牌翻开图案，找出两张相同的卡牌完成配对，直到所有卡牌配对成功。</p>
+<p>通过本项目复习并学习：</p>
+<ul>
+<li><strong>列表</strong></li>
+<li><strong>克隆</strong></li>
+<li><strong>广播</strong></li>
+<li>变量</li>
+<li>随机数</li>
+</ul>
+<div style="position:relative;padding-bottom:75%;height:0;overflow:hidden;">
+<iframe
+  src="/scratch/Memory Match.html"
+  style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+</iframe>
+</div>
+
+
+<h2 id="Part-1：翻翻卡（Memory-Match）"><a href="#Part-1：翻翻卡（Memory-Match）" class="headerlink" title="Part 1：翻翻卡（Memory Match）"></a>Part 1：翻翻卡（Memory Match）</h2><h3 id="游戏介绍-3"><a href="#游戏介绍-3" class="headerlink" title="游戏介绍"></a>游戏介绍</h3><p>点击卡牌，卡牌会翻开显示正面图案；再点击第二张卡牌，如果图案相同则配对成功并消失，如果不同则两张卡牌重新翻回背面。</p>
+<p>玩家需要：</p>
+<ul>
+<li>点击卡牌，观察并记住图案位置</li>
+<li>依次点击两张卡牌进行配对</li>
+<li>配对成功的卡牌消失，配对失败的卡牌翻回背面</li>
+<li>找出全部卡牌完成游戏</li>
+</ul>
+<h3 id="学习内容-5"><a href="#学习内容-5" class="headerlink" title="学习内容"></a>学习内容</h3><ol>
+<li>使用<strong>列表</strong>存储卡牌内容（水果种类），固定顺序</li>
+<li>使用<strong>克隆</strong>根据列表内容批量生成每一张卡牌<ul>
+<li>局部变量“编号”： 用来确定自己对应列表中的第几张卡牌，以及应该显示在哪个位置</li>
+</ul>
+</li>
+<li>使用<strong>广播</strong>在两张卡牌之间传递”是否配对成功”的消息<ul>
+<li>广播判断配对结果</li>
+<li>广播通知另一张卡牌隐藏（配对成功）</li>
+</ul>
+</li>
+<li>使用全局变量记录”上一张翻开的卡牌编号”，实现两张卡牌之间的比较</li>
+</ol>
+<p>完成第一个版本：玩家能够翻开卡牌、判断配对、消除卡牌，直到所有卡牌配对完成。</p>
+<h2 id="Part-2：翻翻卡挑战赛（Memory-Match-Challenge）"><a href="#Part-2：翻翻卡挑战赛（Memory-Match-Challenge）" class="headerlink" title="Part 2：翻翻卡挑战赛（Memory Match Challenge）"></a>Part 2：翻翻卡挑战赛（Memory Match Challenge）</h2><ul>
+<li>增加<strong>翻卡次数</strong>统计，记录玩家一共翻了多少次卡牌，鼓励玩家用更少的次数完成配对。</li>
+<li>增加<strong>倒计时</strong>，在规定时间内完成全部配对即可获胜，超时则广播”overtime”提示游戏结束。</li>
+<li>随即洗牌</li>
+<li>修改为函数的形式</li>
+</ul>
+<hr>
+<h1 id="贪吃蛇（Snake）"><a href="#贪吃蛇（Snake）" class="headerlink" title="贪吃蛇（Snake）"></a>贪吃蛇（Snake）</h1><h2 id="项目介绍-2"><a href="#项目介绍-2" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>控制蛇移动吃到食物，蛇身会不断变长，撞到自己或边界则游戏结束。</p>
+<p>通过本项目复习并学习：</p>
+<ul>
+<li><strong>列表</strong></li>
+<li><strong>画笔（图章）</strong></li>
+<li>键盘控制角色移动</li>
+<li>循环（重复执行）</li>
+<li>碰撞检测</li>
+</ul>
+<div style="position:relative;padding-bottom:75%;height:0;overflow:hidden;">
+<iframe
+  src="/scratch/snake.html"
+  style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+</iframe>
+</div>
+
+
+<h2 id="Part-1：贪吃蛇（Snake）"><a href="#Part-1：贪吃蛇（Snake）" class="headerlink" title="Part 1：贪吃蛇（Snake）"></a>Part 1：贪吃蛇（Snake）</h2><h3 id="游戏介绍-4"><a href="#游戏介绍-4" class="headerlink" title="游戏介绍"></a>游戏介绍</h3><p>控制蛇在网格中移动，吃到食物后蛇身变长一节，撞到自己身体或撞到边界则游戏结束。</p>
+<p>玩家需要：</p>
+<ul>
+<li>使用方向键控制蛇头移动方向</li>
+<li>蛇每移动一步，身体跟着往前挪一格</li>
+<li>吃到食物后蛇身变长，并在新位置重新生成食物</li>
+<li>撞到自己身体或撞到边界时游戏结束</li>
+</ul>
+<h3 id="学习内容-6"><a href="#学习内容-6" class="headerlink" title="学习内容"></a>学习内容</h3><ol>
+<li>使用<strong>列表</strong>（蛇身x、蛇身y）记录蛇身每一节的坐标，模拟身体随移动而变化<ul>
+<li>每走一步，把新的头部坐标<strong>插入</strong>到列表最前面，再把列表<strong>最后一项删除</strong>，实现”整条蛇往前挪一格”的效果</li>
+<li>吃到食物时不删除尾部坐标，从而让蛇变长一节，即将新的头部坐标插入到列表最前面，但不删除尾部坐标</li>
+</ul>
+</li>
+<li>使用<strong>画笔（图章）</strong>，每一帧先清空画面，再按照列表中的坐标依次盖章，画出完整的蛇身</li>
+<li>使用列表中的坐标进行<strong>碰撞检测</strong>：<ul>
+<li>蛇头与食物坐标重合 → 吃到食物</li>
+<li>蛇头与自己身体列表中的坐标重合 → 撞到自己，游戏结束</li>
+<li>蛇头超出边界范围 → 游戏结束</li>
+</ul>
+</li>
+</ol>
+<p>完成第一个版本：玩家能够控制蛇移动、吃到食物变长、撞到自己或边界后结束游戏。</p>
+<hr>
+<h2 id="Part-2：贪吃蛇挑战赛（Snake-Challenge）"><a href="#Part-2：贪吃蛇挑战赛（Snake-Challenge）" class="headerlink" title="Part 2：贪吃蛇挑战赛（Snake Challenge）"></a>Part 2：贪吃蛇挑战赛（Snake Challenge）</h2><ul>
+<li>增加<strong>计分板</strong>，每吃到一个食物获得一分。</li>
+<li>增加<strong>倒计时</strong>或<strong>速度递增</strong>机制，随着分数增加蛇的移动速度变快，提升挑战难度。</li>
+<li>增加蛇身<strong>颜色渐变</strong>效果，从蛇头到蛇尾颜色依次变化，提升视觉效果。</li>
+<li>增加撞击&#x2F;吃到食物的音效，提升游戏体验。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://rirorinn.github.io/2026/07/09/scratch/" data-id="cuidDUfCPh09WIsyAYGAN3_Es" data-title="scratch" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scratch/" rel="tag">scratch</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/1970/01/01/hello-world/" class="article-date">
+  <time class="dt-published" datetime="1970-01-01T00:00:00.000Z" itemprop="datePublished">1970-01-01</time>
+</a>
     
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
         
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/1970/01/01/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://rirorinn.github.io/1970/01/01/hello-world/" data-id="cuid1kqVnNMzhfPVtJdw0muKQ" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
         
-            
-            
-        
-        <a class="
-            hover:text-[var(--c-theme)]
-            hover:bg-[var(--c-20)]
-            rounded-lg
-            p-2
-            my-1
-            flex flex-row items-center
-            group" title="Github" target="_blank" rel="noopener" href="https://github.com/rirorinn">
-            <iconify-icon width="28" icon="mingcute:github-fill"></iconify-icon>
-        </a>
+          <aside id="sidebar">
+  
     
 
-            </div>
-          </div>
-        </div>
-        <!-- Description from config --> 
-        <div class="description-container max-w-prose mx-auto grid grid-cols-1">
-          <div class="text-left p-8">
-            <p>
-              
-            </p>
-          </div>
-        </div>
-      </div>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scratch/" rel="tag">scratch</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/scratch/" style="font-size: 10px;">scratch</a>
     </div>
   </div>
 
   
-</div>
-
-  </main>
-  <footer class="flex flex-col mt-18 mb-12 items-center
-  text-[var(--c-50)] text-sm">
-  <div class="flex flex-row items-center my-12">
     
-    
-        
-        
-            
-            
-        
-        <a class="
-            hover:text-[var(--c-theme)]
-            hover:bg-[var(--c-20)]
-            rounded-lg
-            p-2
-            my-1
-            flex flex-row items-center
-            group" title="Github" target="_blank" rel="noopener" href="https://github.com/rirorinn">
-            <iconify-icon width="28" icon="mingcute:github-fill"></iconify-icon>
-        </a>
-    
-
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/07/">July 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1970/01/">January 1970</a></li></ul>
+    </div>
   </div>
-  <!-- busuanzi -->
-  <div class="mb-6">
+
+
+  
     
-
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/07/18/db-leetcode-med/">db leetcode med</a>
+          </li>
+        
+          <li>
+            <a href="/2026/07/16/db-leetcode-easy/">db leetcode easy</a>
+          </li>
+        
+          <li>
+            <a href="/2026/07/14/SQL-Fundamentals/">SQL Fundamentals</a>
+          </li>
+        
+          <li>
+            <a href="/2026/07/09/scratch/">scratch</a>
+          </li>
+        
+          <li>
+            <a href="/1970/01/01/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
   </div>
-  <!-- copyright -->
-  <!-- <div class="flex flex-row items-center gap-2">
-    <a class="hover:underline"
-      target="_blank"
-      href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-    >
-      CC BY-NC-SA 4.0
-    </a>
-    <span>© 2022-2024</span>
-    <a class="hover:underline"
-    href="https://github.com/chen-yingfa" 
-    target="_blank" 
-    rel="noopener noreferrer">陈英发</a>
-  </div>
-  <!-- powered by -->
-  <!-- <div class="flex items-center gap-1">
-    <span>Powered by</span>
-    <a class="hover:underline" 
-    href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
-    <span>&</span>
-    <a href="https://github.com/chen-yingfa/hexo-theme-fengye" 
-    class="hover:underline"
-    target="_blank"
-      rel="noopener noreferrer"
-      >
-      枫叶 Fengye
-    </a>
-  </div> -->
 
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 rirorinn<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
 </footer>
 
-  <div class="
-    back-to-top
-    fixed right-6
-    z-1024
-    -bottom-20
-    rounded-lg
-    font-bold
-    py-1 px-2
-    text-[var(--c-80)]
-    bg-[var(--c-20)]
-    cursor-pointer
-    text-center
-    drop-shadow-md
-  ">
-    <span class="flex justify-center items-center text-sm">
-      <span id="scrollpercent"><span>0</span> %</span>
-      <iconify-icon width="18" icon="mingcute:arrow-to-up-fill" id="go-top"></iconify-icon>
-    </span>
-  </div>
+    </div>
+    <nav id="mobile-nav">
   
-<script src="/js/main.js"></script>
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
 
-  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none print:hidden" id="maple"></div>
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
 </body>
-
 </html>
