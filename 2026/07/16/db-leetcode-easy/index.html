@@ -132,7 +132,7 @@
 <meta property="article:published_time" content="2026-07-16T11:31:00.000Z" />
 
 
-<meta property="article:modified_time" content="2026-07-24T22:58:49.647Z" />
+<meta property="article:modified_time" content="2026-07-29T08:21:26.984Z" />
 
 
 
@@ -159,7 +159,7 @@
 
 
 
-<script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"db leetcode easy","mainEntityOfPage":{"@type":"WebPage","@id":"https://rirorinn.github.io/2026/07/16/db-leetcode-easy/"},"description":"date相关 Run 正确，但 Submit 错误 使用的数据不同 DATE 不能直接进行 +1 / -1 运算 DATE_ADD() DATE_SUB() DATEDIFF() TIMESTAMPDIFF() TODO： Average Selling Price Wrong aggregation SUM() is over-counted group by 为什么没有去重？ 为什么加上...","image":["https://rirorinn.github.io/db-leetcode-easy/Rising%20Temperature.png"],"datePublished":"2026-07-16T11:31:00.000Z","dateModified":"2026-07-24T22:58:49.647Z","author":{"@type":"Person","name":"rirorinn"},"publisher":{"@type":"Organization","name":"rirorinn","logo":{"@type":"ImageObject","url":"https://rirorinn.github.io/favicon.svg","width":112,"height":112}},"keywords":"SQL"}]</script>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"db leetcode easy","mainEntityOfPage":{"@type":"WebPage","@id":"https://rirorinn.github.io/2026/07/16/db-leetcode-easy/"},"description":"date相关 Run 正确，但 Submit 错误 使用的数据不同 DATE 不能直接进行 +1 / -1 运算 DATE_ADD() DATE_SUB() DATEDIFF() TIMESTAMPDIFF() TODO： Average Selling Price Wrong aggregation SUM() is over-counted group by 为什么没有去重？ 为什么加上...","image":["https://rirorinn.github.io/db-leetcode-easy/Rising%20Temperature.png"],"datePublished":"2026-07-16T11:31:00.000Z","dateModified":"2026-07-29T08:21:26.984Z","author":{"@type":"Person","name":"rirorinn"},"publisher":{"@type":"Organization","name":"rirorinn","logo":{"@type":"ImageObject","url":"https://rirorinn.github.io/favicon.svg","width":112,"height":112}},"keywords":"SQL"}]</script>
 
 
 
@@ -193,6 +193,21 @@
     </div>
     <a href="#main-content" class="shiro-skip-link">Skip to content</a>
     
+    
+<svg width="0" height="0" class="absolute pointer-events-none" aria-hidden="true">
+    <defs>
+        <filter id="seal-roughness" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
+        </filter>
+        <filter id="text-erosion">
+            <feTurbulence type="fractalNoise" baseFrequency="0.15" numOctaves="1" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" />
+        </filter>
+    </defs>
+</svg>
+
+    
 
     
     <div id="progressBar" class="progress-bar" aria-hidden="true"></div>
@@ -221,6 +236,20 @@
                 </p>
                 
                 <!-- Seal: Mathematically Centered -->
+                
+                <div
+                    class="absolute left-full top-1/2 -translate-y-1/2 ml-1 sm:ml-4 origin-left scale-75 sm:scale-110">
+                    
+<svg width="52" height="52" viewBox="0 0 100 100" aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg">
+    <path d="M15,12 Q50,5 85,12 Q95,50 88,88 Q50,95 12,88 Q5,50 15,12 Z"
+        fill="var(--color-seal-fill)" filter="url(#seal-roughness)" opacity="0.92" />
+    <text x="50" y="50" text-anchor="middle" dominant-baseline="central"
+        font-size="42" fill="var(--color-on-seal)" filter="url(#text-erosion)"
+        class="seal-text select-none"> </text>
+</svg>
+
+                </div>
                 
             </div>
             
@@ -452,9 +481,18 @@
 <li>为什么加上<code>AND u.purchase_date BETWEEN p.start_date AND p.end_date</code> 就出来正确结果了？</li>
 <li>题干本身并没有明说data range</li>
 <li>(product_id, start_date, end_date) 表示该商品在这一时间段内的价格，即表明同一个 product 的价格区间不会重叠，所以可以通过该条件进行筛选。</li>
-<li>含义到底是什么？</li>
+<li>含义到底是什么？<ul>
+<li>“只是分成了一组” ，而不是只剩下一行</li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+<p>  <img src="/./db-leetcode-easy/ProductSalesAnalysisIII.png" alt="1070. Product Sales Analysis III" decoding="async" loading="lazy" width="3062" height="1464"></p>
+<ul>
+<li>我一开始是这么写的：  <figure class="not-prose highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> product_id, <span class="built_in">min</span>(<span class="keyword">year</span>) <span class="keyword">as</span> first_year, quantity, price </span><br><span class="line"><span class="keyword">from</span> Sales <span class="keyword">group</span> <span class="keyword">by</span> product_id</span><br></pre></td></tr></table></figure>
+  这样写存在问题： <code>quantity, price</code> 并不能保证和<code>min()</code>查出来的结果保持一致，即最小年份比如说2001并不能保证是quantit为100的数据。<br>  会先执行 <code>GROUP BY product_id</code> 筛出同一id数据，然后得出<code>min()</code>值，但是<code>quantity, price</code>并不知道选择哪一个，所以就会随机选一个。</li>
+<li>图中写法则是搞错了执行顺序。实际执行顺序：  <figure class="not-prose highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">① FROM</span><br><span class="line">② JOIN</span><br><span class="line">③ WHERE</span><br><span class="line">④ GROUP BY</span><br><span class="line">⑤ 聚合函数（MIN、MAX、COUNT...）</span><br><span class="line">⑥ SELECT</span><br><span class="line">⑦ ORDER BY</span><br><span class="line">⑧ LIMIT</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
